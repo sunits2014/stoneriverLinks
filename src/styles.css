@@ -1,1 +1,237 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+    margin:0;
+    padding:0;
+}
+
+* {
+    font-family: Segoe UI;
+    font-size: 14px;
+}
+
+.suite {
+    height: 100%;
+}
+
+.submenu {
+    margin: 0;
+    padding: 0;    
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.submenu div.subContainer {
+    flex-basis: 95%;
+    position: relative;
+}
+
+.submenu p {
+    margin: 0;
+    padding: 0.5em;
+    text-align: left;
+    flex-basis: 5% !important;
+}
+
+.submenu li {
+    list-style-type: none;
+    display: block;
+    align-items: flex-start;
+    position: relative;
+    flex-direction: column;
+}
+
+.submenu li a, .submenu li span {
+    padding: 0.5em;
+    text-decoration: none;
+    color: #1896d4;
+    cursor: pointer;
+    display: block;
+    line-height: 100%;
+}
+
+.submenu li span {
+    width: 40%;
+    position: relative;
+    z-index: 2;
+}
+
+.submenuHighlight {
+    color: #0f477d !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.submenuHighlight:after {
+    content: "";
+    position: absolute;
+    right:0;
+    left:30%;
+    top:50%;
+    bottom: 50%;
+    height: 1px;
+    background-color: #0f477d;
+    animation: l2r 0.3s ease-in-out;
+}
+
+@keyframes l2r {
+    0%{
+        opacity: 0;
+        left: 28%;
+    }
+    100% {
+        opacity: 1;
+        left: 30%;
+    }
+}
+
+.sub_window {
+    position: absolute;
+    /* position: fixed; */
+    right: 1%;
+    top: 0;
+    bottom: 0;
+    left: 40%;
+    background-color: #fff;
+    z-index: 5;
+}
+
+.sub_window_content {
+    position: absolute;
+    right: 1em;
+    /* height: 100%; */
+    top:0;
+    left:0;
+    /* bottom: 0; */
+    background-color: #fff;
+    box-shadow: 0 0 0px 1px #0f477d inset;
+    padding: 0.5em;
+}
+
+.sub_window_content h3 {
+    margin:0;
+    padding-bottom: 0.25em;
+    font-weight: normal;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Servers Info */
+
+.infoDivContainer {
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 #666;
+}
+
+.infoDiv p {
+    border: 1px solid #333;
+    color: #333;
+    background-color: white;
+}
+
+.infoDiv a {
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+.infoDiv table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.infoDiv table > thead {
+    background-color: #1896d4;
+    color: white;
+}
+
+.infoDiv table > thead > tr > th {
+    padding: 0.5em;
+    text-align: left;
+}
+
+.infoDiv table > tbody {
+    /* border: 1px solid #333; */
+    background-color: white;
+}
+
+.infoDiv table > tbody > tr > td {
+    padding: 0.5em;
+    color: #333;
+}
+
+.infoDiv table > tbody > tr:nth-child(even) {
+    background-color: #ccc;
+}
+
+.activeLink {
+    color: white !important;
+    position: relative;
+    background-color: #1896d4;
+}
+
+.activeLink:after {
+    position: absolute;
+    content: "\f105";
+    font-family: FontAwesome;
+    color: white;
+    animation: fadeIn 1s ease-in-out;
+    right: 2em;
+    line-height: 100%;
+    animation: l22r 0.3s ease-in-out;
+}
+
+.linksSpace {
+    display: flex;
+    flex-direction: column;
+    margin-top:0.5em;
+    border-top:1px solid #ccc;
+}
+
+.linksSpace small {
+    padding-left:0 !important;
+    width: 100% !important;
+    display: flex;
+    align-items: center;
+}
+
+.linksSpace small a {
+    padding-left:0 !important;
+    margin-top: 0 !important;
+    /* user-select: none; */
+}
+
+.linksSpace small a::selection {
+    background-color: transparent;
+}
+
+.linksSpace small a i {
+    color: forestgreen !important;
+    margin-left: 0.5em;
+}
+
+.srContent {
+    display: flex;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.srContent p {
+    flex-basis: 70%;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.25em !important;
+}
+
+.blockUI {
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:20%;
+    right:0;
+    background-color: transparent;
+    z-index: 1;
+}

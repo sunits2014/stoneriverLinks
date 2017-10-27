@@ -1,0 +1,497 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Segoe UI;
+}
+
+.mainContainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContainer .image {
+    flex-basis: 30%;
+    width: 100%;
+    /*    min-height: 40%;*/
+    position: absolute;
+    /* top: 0; */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    flex-direction: column;
+    display: flex;
+    /*    filter: blur(2px);*/
+}
+
+.mainContainer .image img {
+    height: 100%;
+    width: 100%;
+    flex-basis: 100%;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.content {
+    flex-basis: 100%;
+    /*    padding: 0.5em;*/
+    display: flex;
+    position: relative;
+    z-index: 1;
+    flex-direction: column;
+}
+
+.content p {
+    margin: 0;
+    flex-basis: 15%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.left_content {
+    flex-basis: 10%;
+    display: flex;
+    /*    flex-direction: column;*/
+    display: flex;
+    align-items: center;
+       justify-content: space-between;
+}
+
+.left_content img {
+    flex-basis: 25%;
+    height: 100%;
+    image-rendering: optimizeQuality;
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+}
+
+.hiddenArt {
+    display: none;
+}
+
+.srContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.srContent p {
+    flex-basis: 70%;
+    justify-content: center;
+}
+
+.right_content {
+    flex-basis: 90%;
+    display: flex;
+    /*    align-items: center;*/
+    /*    justify-content: center;*/
+    background-color: #ddd;
+}
+
+/*
+.right_contentBody {
+    flex-basis: 75%;
+    width: 75%;
+    padding: 0.5em;
+    color: #999;
+}
+*/
+
+/* Social List Styling*/
+
+.socialList {
+    margin: 0;
+    padding: 0;
+}
+
+.socialList li {
+    list-style-type: none;
+    display: inline-flex;
+}
+
+.socialList li a {
+    color: #333;
+    font-size: 1.5em;
+    margin: 0 0.2em;
+}
+
+/*Styling the list 
+
+.mainList {
+    margin: 0;
+    padding: 0;
+    flex-basis: 85%;
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.mainList li {
+    list-style-type: square;
+    display: inline-flex;
+    align-items: center;
+     position: relative;
+}
+
+.mainList > li > a {
+    padding: 0.5em 3em;
+    background-color: #ccc;
+    
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+
+        color: white;
+    text-decoration: none;
+        width: 12em;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    cursor: pointer;
+        border-radius: 6px;
+}
+
+.mainList > li > a:after {
+    content: "";
+    position: absolute;
+    bottom: 0%;
+    left: 0;
+    right: 100%;
+    height: 2px;
+    width: 0%;
+    background-color: #1896d4;
+}
+
+.mainList li a:hover:after {
+    animation: l2r 0.3s ease-in-out;
+    right: 0;
+    width: 100%;
+}
+
+@keyframes l2r {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.mainList li a span {
+    font-size: 2em;
+    line-height: 0.5em;
+}*/
+
+.submenu {
+    margin: 0;
+    padding: 0;    
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.submenu div.subContainer {
+    flex-basis: 95%;
+    position: relative;
+}
+
+.submenu p {
+    margin: 0;
+    padding: 0.5em;
+    text-align: left;
+    flex-basis: 5% !important;
+}
+
+.submenu li {
+    list-style-type: none;
+    display: block;
+    align-items: flex-start;
+    position: relative;
+    flex-direction: column;
+}
+
+.submenu li a, .submenu li span {
+    padding: 0.5em;
+    text-decoration: none;
+    color: #1896d4;
+    cursor: pointer;
+    display: block;
+    line-height: 100%;
+}
+
+.submenu li span {
+    width: 40%;
+}
+
+.submenuHighlight {
+    color: #0f477d !important;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.submenuHighlight:after {
+    content: "";
+    position: absolute;
+    right:0;
+    left:30%;
+    top:50%;
+    bottom: 50%;
+    height: 1px;
+    background-color: #0f477d;
+    animation: l2r 0.3s ease-in-out;
+}
+
+@keyframes l2r {
+    0%{
+        opacity: 0;
+        left: 28%;
+    }
+    100% {
+        opacity: 1;
+        left: 30%;
+    }
+}
+
+.highlight {
+    background-color: #1896d4 !important;
+    color: white;
+    justify-content: center !important;
+    position: relative;
+    line-height: 100%;
+}
+
+.highlight:after {
+    content: "\f105";
+    font-family: FontAwesome;
+    position: absolute;
+    opacity: 1 !important;
+    right: 1em;
+    transition: right 0.3s ease-in-out;
+}
+
+.sub_window {
+    position: absolute;
+    /* position: fixed; */
+    right: 1%;
+    top: 0;
+    bottom: 0;
+    left: 40%;
+    background-color: #fff;
+    z-index: 5;
+}
+
+.sub_window_content {
+    position: absolute;
+    right: 1em;
+    /* height: 100%; */
+    top:0;
+    left:0;
+    /* bottom: 0; */
+    background-color: #fff;
+    box-shadow: 0 0 0px 1px #0f477d inset;
+    padding: 0.5em;
+}
+
+.sub_window_content h3 {
+    margin:0;
+    padding-bottom: 0.25em;
+    font-weight: normal;
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Servers Info */
+
+.infoDivContainer {
+    background-color: #fff;
+    box-shadow: 0 0 4px 0 #666;
+}
+
+.infoDiv p {
+    border: 1px solid #333;
+    color: #333;
+    background-color: white;
+}
+
+.infoDiv a {
+    text-align: center;
+    margin-top: 0.5em;
+}
+
+.infoDiv table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+
+.infoDiv table > thead {
+    background-color: #1896d4;
+    color: white;
+}
+
+.infoDiv table > thead > tr > th {
+    padding: 0.5em;
+    text-align: left;
+}
+
+.infoDiv table > tbody {
+    /* border: 1px solid #333; */
+    background-color: white;
+}
+
+.infoDiv table > tbody > tr > td {
+    padding: 0.5em;
+    color: #333;
+}
+
+.infoDiv table > tbody > tr:nth-child(even) {
+    background-color: #ccc;
+}
+
+.subContainer li a {
+    cursor: pointer;
+}
+
+.subContainer li a i {
+    margin-left: 1em;
+}
+
+
+.left_rightcontent {
+    flex-basis: 20%;
+    background-color: #0f477d;
+    color: white;
+}
+
+.left_rightcontent ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.left_rightcontent ul li {
+    list-style-type: none;
+    display: flex;
+}
+
+.left_rightcontent ul li:hover {
+    background-color: #1896d4;
+    color: white;
+}
+
+.left_rightcontent ul li a {
+    flex-basis: 100%;
+    padding: 0.5em;
+    color: white;
+    cursor: pointer;
+    line-height: 100%;
+    position: relative;
+    text-decoration: none;
+}
+
+.left_rightcontent ul li a:hover:after {
+    opacity: 1;
+    right: 1em;
+    transition: all 0.3s ease-in-out;
+}
+
+.left_rightcontent ul li a:after {
+    content: "\f105";
+    font-family: FontAwesome;
+    position: absolute;
+    right: 1.5em;
+    transition: right 0.3s ease-in-out;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* right content */
+
+.right_rightcontent {
+    flex-basis: 80%;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.liveContent {
+    display: block !important;
+    flex-basis: 100%;
+}
+
+.portrait, .suite {
+    height: 100%;
+}
+
+.switchCase {
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 4px 0 #666;
+    background-color: white;
+}
+
+.listContainer {
+    flex-basis: 95%;
+}
+
+.activeLink {
+    color: white !important;
+    position: relative;
+    background-color: #1896d4;
+}
+
+.activeLink:after {
+    position: absolute;
+    content: "\f105";
+    font-family: FontAwesome;
+    color: white;
+    animation: fadeIn 1s ease-in-out;
+    right: 2em;
+    line-height: 100%;
+    animation: l22r 0.3s ease-in-out;
+}
+
+@keyframes l22r {
+    0%{
+        opacity: 0;
+        right: 3em;
+    }
+    100% {
+        opacity: 1;
+        right: 2em;
+    }
+}
+
+.switchCaseChild {
+    flex-basis: 100%; 
+    display: flex; 
+    flex-direction: column; 
+    box-shadow: 0 0 4px 0 #666; 
+    background-color: white;
+}
+

@@ -1,0 +1,170 @@
+[
+    {
+        "title": "Demo Region",
+        "link": [
+            {
+                "title": "Click to login",
+                "link": "http://lstraining.lifesuite.org/flex/lifesuite.html"
+            }
+        ],
+        "data": [
+            {
+                "Servers": "No data available",
+                "ServerName": "No data available",
+                "Address": "No data available"
+            }
+        ],
+        "desc": "In this region we will be working on LifeSuite version 8.0"
+    },
+    {
+        "title": "SSQ Region",
+        "link": [
+            {
+                "title": "Click to login",
+                "link": "http://rlmvsssqweb01.fiservisd.fiservisdroot.local/flex/LifeSuite.html"
+            }
+        ],
+        "data": [
+            {
+                "Servers": "No data available",
+                "ServerName": "No data available",
+                "Address": "No data available"
+            }
+        ],
+        "desc": "In this region we will be working for Client SSQ Financial on the LifeSuite Version 9.0"
+    },
+    {
+        "title": "QA Region",
+        "link": [
+            {
+                "title": "Click to login",
+                "link": "http://10.14.36.30/flex/lifesuite.html"
+            }
+        ],
+        "data": [
+            {
+                "Servers": "Application Servers",
+                "ServerName": "RLMVSLS85APP01",
+                "Address": "10.14.36.28"
+            },
+            {
+                "Servers": "Web Servers",
+                "ServerName": "RLMVSLS85WEB01",
+                "Address": "10.14.36.30"
+            },
+            {
+                "Servers": "PilotFish Servers",
+                "ServerName": "RLMVSLS85PF01",
+                "Address": "10.14.36.29"
+            },
+            {
+                "Servers": "SQL DB Servers",
+                "ServerName": "RLMVSLSSQL1201",
+                "Address": "10.14.13.167"
+            }
+        ],
+        "desc": "In this region we will be working on LifeSuite version 9.0"
+    },
+    {
+        "title": "New York Life Region",
+        "link": [
+            {
+                "title": "Click to login",
+                "link": "https://rlmvsnylweb2.lifesuite.org/flex/lifesuite.html#"
+            },
+            {
+                "title": "Click to login (alternate link)",
+                "link": "https://rlmvsnylweb2.fiservisd.fiservisdroot.local/flex/LifeSuite.html#"
+            }
+        ],
+        "data": [
+            {
+                "Servers": "No data available",
+                "ServerName": "No data available",
+                "Address": "No data available"
+            }
+        ],
+        "desc": "In this region we will be working on LifeSuite version 9.0"
+    },
+    {
+        "title": "Foresters Region",
+        "link": [
+            {
+                "title": "Click to login",
+                "link": "http://rlmvsfor8web01.fiservisd.fiservisdroot.local/flex/lifesuite.html"
+            }
+        ],
+        "data": [
+            {
+                "Servers": "No data available",
+                "ServerName": "No data available",
+                "Address": "No data available"
+            }
+        ],
+        "desc": "In this region we will be working on LifeSuite version 9.0"
+    },
+    {
+        "title": "Amica Region",
+        "link": [
+            {
+                "title": "Click to login",
+                "link": "http://rlmvsamiweb01.fiservisd.fiservisdroot.local/flex/lifesuite.html"
+            }
+        ],
+        "data": [
+            {
+                "Servers": "Application Servers",
+                "ServerName": "RLMVSLS85APP01",
+                "Address": "10.14.36.28"
+            },
+            {
+                "Servers": "Web Servers",
+                "ServerName": "RLMVSLS85WEB01",
+                "Address": "10.14.36.30"
+            },
+            {
+                "Servers": "PilotFish Servers",
+                "ServerName": "RLMVSLS85PF01",
+                "Address": "10.14.36.29"
+            },
+            {
+                "Servers": "SQL DB Servers",
+                "ServerName": "RLMVSLSSQL1201",
+                "Address": "10.14.13.167"
+            }
+        ],
+        "desc": "As of now we have access to the following servers"
+    },
+    {
+        "title": "Patriot Region",
+        "link": [
+            {
+                "title": "Click to login",
+                "link": "http://10.14.13.145/flex/lifesuite.html"
+            }
+        ],
+        "data": [
+            {
+                "Servers": "Application Servers",
+                "ServerName": "rlmvspliapp01",
+                "Address": "10.14.13.151"
+            },
+            {
+                "Servers": "Web Servers",
+                "ServerName": "rlmvspliweb01",
+                "Address": "10.14.13.145"
+            },
+            {
+                "Servers": "PilotFish Servers",
+                "ServerName": "rlmvsplipf01",
+                "Address": "TBA"
+            },
+            {
+                "Servers": "SQL DB Servers",
+                "ServerName": "rlmvslsssql12",
+                "Address": "TBA"
+            }
+        ],
+        "desc": "As of now we have access to the following servers"
+    }
+]

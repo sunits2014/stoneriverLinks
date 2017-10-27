@@ -1,0 +1,43 @@
+<div class="mainContainer">
+    <div class="image">
+        <img src="assets/images/bg.jpg">
+    </div>
+    <div class="content">
+        <div class="left_content">
+            <img src="assets/images/sr_logo2.png">
+            <ul class="socialList">
+                <li>
+                    <a href="https://www.facebook.com/stoneriverinc/" target="_blank">
+                        <i class="fa fa-facebook-square"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/stoneriverins?lang=en" target="_blank">
+                        <i class="fa fa-twitter-square"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="right_content">
+            <div class="left_rightcontent">
+                <ul>
+                    <li>
+                        <a class="firstChild" routerLink="home" routerLinkActive="highlight">Home</a>
+                    </li>
+                    <li>
+                        <a class="firstChild" routerLink="lifeportrait" routerLinkActive="highlight">Life Portrait</a>
+                    </li>
+                    <li>
+                        <a class="firstChild" routerLink="lifesuite" routerLinkActive="highlight">Life Suite</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_rightcontent">
+                <div class="switchCase">
+                    <router-outlet>
+                    </router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<section class="suite">
+  <ul class="submenu">
+    <p>Life Suite is an Automated Underwriting System.</p>
+    <div class="subContainer">
+      <li *ngFor="let suite of lifeSuiteArray">
+        <span title="{{suite.desc}}" (click)="showRegionData(suite)" [class.activeLink]="clicked === suite" (click)="clicked = suite">{{suite.title}}</span>
+        <div class="blockUI" *ngIf="showTable == suite.title" (click)="closeWindow()"></div>
+        <div class="sub_window" *ngIf="showTable == suite.title">
+          <div class="sub_window_content infoDivContainer">
+            <h3>{{suite.title}}</h3>
+            <div class="sub_window_contentDiv infoDiv">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Servers</th>
+                    <th>Server Name</th>
+                    <th>Address</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let dt of suite.data">
+                    <td>{{ dt.Servers }}</td>
+                    <td>{{ dt.ServerName }}</td>
+                    <td>{{ dt.Address }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="linksSpace">
+                <small>Please click on the link(s) below to copy and then open in IE:</small>
+                <small *ngFor="let linksArray of suite.link">
+                  <a #linkValue (click)="copyLink(linkValue)">{{linksArray.link}}
+                    <i class="fa fa-check-circle" *ngIf="showCopied"></i>
+                  </a>
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+    </div>
+  </ul>
+</section>
