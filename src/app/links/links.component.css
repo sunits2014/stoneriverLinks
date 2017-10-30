@@ -114,24 +114,6 @@ body {
 }
 */
 
-/* Social List Styling*/
-
-.socialList {
-    margin: 0;
-    padding: 0;
-}
-
-.socialList li {
-    list-style-type: none;
-    display: inline-flex;
-}
-
-.socialList li a {
-    color: #333;
-    font-size: 1.5em;
-    margin: 0 0.2em;
-}
-
 /*Styling the list 
 
 .mainList {

@@ -9,6 +9,26 @@ html, body {
     font-size: 14px;
 }
 
+.btn {
+    padding: 0.5em;
+    color: white;
+    /* border-radius: 4px; */
+    border:none;
+    background-color: #1896d4;
+    margin: 0 0.25em;
+    cursor: pointer;
+    line-height: 100%;
+    font-size: 13px;
+    align-items: center;
+    box-shadow: 0px 2px 1px 0 #333;
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow:  0 0 0 0;
+    outline: none;
+}
+
 .suite {
     height: 100%;
 }
@@ -211,19 +231,6 @@ html, body {
 .linksSpace small a i {
     color: forestgreen !important;
     margin-left: 0.5em;
-}
-
-.srContent {
-    display: flex;
-    justify-content: center;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-.srContent p {
-    flex-basis: 70%;
-    text-align: center;
-    justify-content: center;
-    font-size: 1.25em !important;
 }
 
 .blockUI {

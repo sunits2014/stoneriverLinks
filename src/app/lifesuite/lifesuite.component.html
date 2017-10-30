@@ -1,6 +1,8 @@
 <section class="suite">
   <ul class="submenu">
-    <p>Life Suite is an Automated Underwriting System.</p>
+    <p>
+      <span>Life Suite is an Automated Underwriting System.</span>      
+    </p>
     <div class="subContainer">
       <li *ngFor="let suite of lifeSuiteArray">
         <span title="{{suite.desc}}" (click)="showRegionData(suite)" [class.activeLink]="clicked === suite" (click)="clicked = suite">{{suite.title}}</span>
@@ -37,7 +39,6 @@
           </div>
         </div>
       </li>
-
     </div>
   </ul>
 </section>
