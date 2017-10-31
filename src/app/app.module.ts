@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { LifeportraitComponent } from './lifeportrait/lifeportrait.component';
 import { LifesuiteComponent } from './lifesuite/lifesuite.component';
 import { HomeComponent } from './home/home.component';
+import { AddRegionComponent } from './add-region/add-region.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     LinksComponent,
     LifeportraitComponent,
     LifesuiteComponent,
-    HomeComponent
+    HomeComponent,
+    AddRegionComponent
   ],
   imports: [
     BrowserModule,

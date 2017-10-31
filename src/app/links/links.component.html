@@ -4,19 +4,35 @@
     </div>
     <div class="content">
         <div class="left_content">
-            <img src="assets/images/sr_logo2.png">            
+            <img src="assets/images/sr_logo2.png">
+            <div class="drpdwnList">
+                <span [innerText]="spanText"></span>
+                <i class="fa fa-angle-down" (click)="showMenu()" [class.drpdwnListactive]="onMenuOpen"></i>
+                <div class="blockUI" (click)="hideMenu()" *ngIf="noMenu"></div>
+                <ul class="actionList" *ngIf="noMenu">
+                    <li>
+                        <a [routerLink]="['addData']" routerLinkActive="activeLinkColor" (click)="getTitle($event)">Add Data</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['updateData']" routerLinkActive="activeLinkColor" (click)="getTitle($event)">Update Data</a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['deleteData']" routerLinkActive="activeLinkColor" (click)="getTitle($event)">Delete Data</a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <div class="right_content">
             <div class="left_rightcontent">
                 <ul>
                     <li>
-                        <a class="firstChild" routerLink="home" routerLinkActive="highlight">Home</a>
+                        <a class="firstChild" routerLink="home" routerLinkActive="highlight" (click)="getTitle($event)">Home</a>
                     </li>
                     <li>
-                        <a class="firstChild" routerLink="lifeportrait" routerLinkActive="highlight">Life Portrait</a>
+                        <a class="firstChild" routerLink="lifeportrait" routerLinkActive="highlight" (click)="getTitle($event)">Life Portrait</a>
                     </li>
                     <li>
-                        <a class="firstChild" routerLink="lifesuite" routerLinkActive="highlight">Life Suite</a>
+                        <a class="firstChild" routerLink="lifesuite" routerLinkActive="highlight" (click)="getTitle($event)">Life Suite</a>
                     </li>
                 </ul>
             </div>

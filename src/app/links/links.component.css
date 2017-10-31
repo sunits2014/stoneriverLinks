@@ -477,3 +477,84 @@ body {
     background-color: white;
 }
 
+.drpdwnList {
+    display: flex;
+    align-items: center;
+    color: white;
+    line-height: 100%;
+    background-color: #0f477d;
+    border-radius: 4px;
+    margin-right: 0.5em;
+    position: relative;
+    z-index: 10;
+}
+
+.drpdwnList span {
+    position: relative;
+    padding: 0.5em 1em;
+    display: flex;
+    justify-content: center;
+    min-width: 6em;
+}
+
+.drpdwnList span:after {
+    height: 100%;
+    content: "";
+    width: 1px;
+    position: absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    background-color: #ddd;
+}
+
+.drpdwnList .fa {
+    position: relative;
+    padding: 0.5em;
+    width: 1em;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.drpdwnListactive {
+    box-shadow: 0 0 2px 0 #fff inset;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.actionList {
+    margin:0;
+    padding:0;
+    position: absolute;
+    top:105%;
+    left:0;
+    right:0;
+    background-color: #0f477d;
+    border-radius: 4px;
+    overflow: auto;
+    z-index: 10;
+}
+
+.actionList li {
+    list-style-type: none;
+    display: block;
+}
+
+.activeLinkColor {
+    background-color: #1896d4;
+}
+
+.actionList li:hover {
+    background-color: #1896d4;
+}
+
+.actionList li a {
+    padding:0.5em 1em;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+

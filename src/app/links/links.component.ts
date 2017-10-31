@@ -12,24 +12,38 @@ export class LinksComponent implements OnInit {
   constructor(public getLifeData: LifeportraitService) { }
 
   ngOnInit() {
+    this.spanText = "Manage Data"
   }
 
-  
+
   public link1: boolean;
   public link2: boolean;
   public selectLifeSuite: string;
+  public spanText: string = "";
 
-  public showList(event) {
-    let eventText = event.srcElement.text;
-    if(eventText == "Life Portrait"){
-      this.link1 = true;
-      this.link2 = false;
-      this.selectLifeSuite = "portrait";
-    }else if(eventText == "Life Suite") {
-      this.link1 = false;
-      this.link2 = true;
-      this.selectLifeSuite = "suite";
+  public noMenu: boolean;
+  public onMenuOpen: boolean;
+  public showMenu() {
+    this.noMenu = !this.noMenu;
+    this.onMenuOpen = true;
+  }
+
+  public hideMenu() {
+    if (this.noMenu == true) {
+      this.noMenu = false;
+      this.onMenuOpen = false;
     }
-  } 
+  }
+
+  public getTitle(event) {
+    if (event.srcElement.text == "Add Data" || event.srcElement.text == "Update Data" || event.srcElement.text == "Delete Data") {
+      this.noMenu = false;
+      this.onMenuOpen = false;
+      this.spanText = event.srcElement.text;
+    }
+    else {
+      this.spanText = "Manage Data"
+    }
+  }
 
 }

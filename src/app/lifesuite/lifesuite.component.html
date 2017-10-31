@@ -1,8 +1,6 @@
 <section class="suite">
   <ul class="submenu">
-    <p>
-      <span>Life Suite is an Automated Underwriting System.</span>      
-    </p>
+    <h2>Life Suite is an Automated Underwriting System.</h2>
     <div class="subContainer">
       <li *ngFor="let suite of lifeSuiteArray">
         <span title="{{suite.desc}}" (click)="showRegionData(suite)" [class.activeLink]="clicked === suite" (click)="clicked = suite">{{suite.title}}</span>
