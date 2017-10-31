@@ -7,10 +7,11 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class RegionService {
 
-  public regionURL = "assets/portaldata.json";
+  public regionURL = 'assets/portaldata.json';
   constructor(public _http: Http) { }
 
   getPortalData() {
+    // tslint:disable-next-line:max-line-length
     return this._http.get(this.regionURL).map(response => response.json()).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 }
