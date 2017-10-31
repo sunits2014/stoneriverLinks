@@ -23,3 +23,90 @@ h2 {
     font-weight: normal;
     font-size: 16px;
 }
+
+.dataForm {
+    flex-basis: 95%;
+    display: flex;
+    flex-direction: column;
+}
+
+.selectPortalSection {
+    flex-basis: 7%;
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    justify-content: space-between;
+}
+
+.selectPortalSection select {
+    margin: 0 1em;
+    width: 12em; 
+    padding: 0.25em;
+}
+
+.selectPortalSection select:focus {
+    outline: none;  
+}
+
+.dataInputSection {
+    flex-basis: 93%;
+    display: flex;
+    flex-direction: column;
+    background-color: #eee;
+}
+
+.dataInputSection form {
+    padding: 0.5em;
+}
+
+.portalNameForm {
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left:0;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portalNameForm form {
+    background-color: white;
+    padding: 2em;
+    border-radius: 4px;
+    position: relative;
+}
+
+.closeModal {
+    position: absolute;
+    top:0.5em;
+    right: 0.5em;
+}
+
+.closeModal .fa {
+    color: #666;
+    cursor: pointer;
+}
+
+.regionForm {
+    margin:0;
+    padding:0;
+}
+
+.regionForm li {
+    list-style-type: none;
+    display: flex;
+    padding: 1em;
+    align-items: center;
+}
+
+.regionForm li label {
+    flex-basis: 20%;
+}
+
+.regionForm li input {
+    flex-basis: 50%;
+}
+
