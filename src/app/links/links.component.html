@@ -9,7 +9,7 @@
                 <span [innerText]="spanText"></span>
                 <i class="fa fa-angle-down" (click)="showMenu()" [class.drpdwnListactive]="onMenuOpen"></i>
                 <div class="blockUI" (click)="hideMenu()" *ngIf="noMenu"></div>
-                <ul class="actionList" *ngIf="noMenu">
+                <ul class="actionList" [@fadeAnim] *ngIf="noMenu">
                     <li>
                         <a [routerLink]="['addData']" routerLinkActive="activeLinkColor" (click)="getTitle($event)">Add Data</a>
                     </li>

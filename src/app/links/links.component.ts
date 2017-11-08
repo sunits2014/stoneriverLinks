@@ -1,11 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { LifeportraitService } from '../lifeportrait.service';
+import { animate, state, transition, trigger, style } from '@angular/animations';
 
 @Component({
   selector: 'app-links',
   templateUrl: './links.component.html',
   styleUrls: ['./links.component.css'],
-  providers: [LifeportraitService]
+  providers: [LifeportraitService],
+  animations: [
+    trigger('fadeAnim',[
+      transition(':enter',[
+        style({ top: '0%' }),
+        animate('150ms', style({ top: '105%' }))
+      ]),
+      transition(':leave',[
+        style({ opacity: '1'}),
+        animate('150ms', style({ opacity: '0'}))
+      ])
+    ])
+  ]  
 })
 export class LinksComponent implements OnInit {
 

@@ -1,11 +1,14 @@
 <div class="portalNameForm" *ngIf="addPortal">
-  <form>
+  <form (submit)="addNewPortal()">
     <span class="closeModal" (click)="closeModal()">
       <i class="fa fa-times-circle"></i>
     </span>
     <label for="portal_name">Portal Name:</label>
-    <input class="input" type="text" id="portal_name" name="portal_name" [(ngModel)]="newPortal">
-    <button class="btn" type="submit" (click)="addNewPortal()">Save</button>
+    <div>
+      <input class="input" type="text" id="portal_name" name="portal_name" [(ngModel)]="newPortal">
+      <button class="btn" type="submit">Save</button><br>
+      <span class="errorStyle" id="portalError" *ngIf="blankInput">Please provide an input.</span>
+    </div>
   </form>
 </div>
 <section class="addRegion">
@@ -16,6 +19,7 @@
         <div>
           <label for="selectPortal">Select Portal</label>
           <select id="selectPortal" name="selectedPortal" [(ngModel)]="selectedPortal" (change)="getvalue()">
+            <option [value]=null disabled>Please choose</option>
             <option *ngFor="let portal of portals" [ngValue]="portal.data">{{portal.title}}</option>
           </select>
           <button class="btn" type="button" (click)="openNewPortalForm()">Add New Portal</button>
@@ -35,8 +39,8 @@
               <label for="title">Title:</label>
               <input class="input" id="title" name="title" [(ngModel)]="selectedRegion.title">
             </li>
-            <li *ngFor="let links of selectedRegion.link">
-              <label for="link">Link:</label>
+            <li *ngFor="let links of selectedRegion.link, let idx = index">
+              <label for="link">Link {{idx + 1}}:</label>
               <input class="input" id="link" name="link" [(ngModel)]="links.link">
             </li>
             <li>

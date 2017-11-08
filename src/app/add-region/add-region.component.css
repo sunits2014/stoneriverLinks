@@ -79,6 +79,10 @@ h2 {
     position: relative;
 }
 
+.portalNameForm form div {
+    position: relative;
+}
+
 .closeModal {
     position: absolute;
     top:0.5em;
@@ -108,5 +112,15 @@ h2 {
 
 .regionForm li input {
     flex-basis: 50%;
+}
+
+.errorStyle {
+    color: indianred;
+}
+
+#portalError {
+    position: absolute;
+    top:100%;
+    left:0;
 }
 

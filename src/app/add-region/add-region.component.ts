@@ -10,11 +10,11 @@ import { RegionService } from '../region.service';
 })
 export class AddRegionComponent implements OnInit {
 
-  constructor(public route: ActivatedRoute, public regiondata: RegionService) { 
+  constructor(public route: ActivatedRoute, public regiondata: RegionService) {
     this.selectedRegion = {};
     this.selectedRegion.title = "";
     this.selectedRegion.desc = "";
-    this.selectedRegion.link = [{"title":""},{"link":""}];
+    this.selectedRegion.link = [{ "title": "" }, { "link": "" }];
     this.selectedRegion.link[0].link = "";
   }
 
@@ -38,9 +38,10 @@ export class AddRegionComponent implements OnInit {
   }
   public closeModal() {
     this.addPortal = false;
+    this.blankInput = false;
   }
 
-  public selectedPortal: string;
+  public selectedPortal: any = null;
   getvalue() {
     console.log(this.selectedPortal)
   }
@@ -51,8 +52,15 @@ export class AddRegionComponent implements OnInit {
   }
 
   public newPortal: string;
+  public blankInput: boolean;
   public addNewPortal() {
-    this.portals.push({'title': this.newPortal});
-    this.newPortal = "";
+    if (this.newPortal == null || "") {
+      this.blankInput = true;
+
+    }
+    else {
+      this.portals.push({ 'title': this.newPortal });
+      this.newPortal = "";
+    }
   }
 }

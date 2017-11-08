@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { LinksComponent } from './links/links.component';
@@ -26,7 +27,8 @@ import { AddRegionComponent } from './add-region/add-region.component';
     BrowserModule,
     FormsModule,
     RouteModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule
   ],
   providers: [Location, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
