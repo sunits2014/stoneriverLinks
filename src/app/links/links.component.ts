@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LifeportraitService } from '../lifeportrait.service';
 import { animate, state, transition, trigger, style } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-links',
@@ -22,10 +23,19 @@ import { animate, state, transition, trigger, style } from '@angular/animations'
 })
 export class LinksComponent implements OnInit {
 
-  constructor(public getLifeData: LifeportraitService) { }
+  constructor(public getLifeData: LifeportraitService, public _route: Router) { }
 
   ngOnInit() {
-    this.spanText = "Manage Data"
+    let routeText = this._route.url;
+    if(routeText == "/stoneriver/addData") {
+      this.spanText = "Add Data";
+    }else if(routeText == "/stoneriver/updateData") {
+      this.spanText = "Update Data";
+    }else if(routeText == "/stoneriver/deleteData") {
+      this.spanText = "Delete Data"
+    }else {
+      this.spanText = "Manage Data"
+    }
   }
 
 

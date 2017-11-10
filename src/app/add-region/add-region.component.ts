@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RegionService } from '../region.service';
+import { HostListener } from '@angular/core/src/metadata/directives';
 
 @Component({
   selector: 'app-add-region',
@@ -18,6 +19,8 @@ export class AddRegionComponent implements OnInit {
     this.selectedRegion.link[0].link = "";
   }
 
+  public onAdd: boolean;
+
   public routeTitle: any;
   public headerText: string;
   public portals = [];
@@ -25,6 +28,7 @@ export class AddRegionComponent implements OnInit {
     this.routeTitle = this.route.snapshot.data;
     this.headerText = this.routeTitle.title;
     this.regiondata.getPortalData().subscribe(result => this.portals = result);
+    this.onAdd = true;
   }
 
   public addPortal: boolean;
@@ -62,5 +66,9 @@ export class AddRegionComponent implements OnInit {
       this.portals.push({ 'title': this.newPortal });
       this.newPortal = "";
     }
+  }
+
+  public onScroll(event) {
+    console.log(event.target.offsetTop);
   }
 }

@@ -104,14 +104,15 @@ h2 {
     display: flex;
     padding: 1em;
     align-items: center;
+    /* width: 70%; */
 }
 
 .regionForm li label {
-    flex-basis: 20%;
+    flex-basis: 30%;
 }
 
 .regionForm li input {
-    flex-basis: 50%;
+    flex-basis: 70%;
 }
 
 .errorStyle {
@@ -122,5 +123,41 @@ h2 {
     position: absolute;
     top:100%;
     left:0;
+}
+
+/* Data Table Styles */
+.dataTable {
+    flex-basis: 70%;
+    padding: 0.5em;
+    background-color: #ddd;
+    /* height: 12em; */
+    overflow-y: auto;
+    box-shadow: 0 0 0 1px #ccc inset;
+    position: relative;
+}
+
+.dataTable table {
+    border-collapse: collapse;
+    width: 100%;
+    min-height: 100%;
+}
+
+.dataTable table thead {
+    background-color: #1896d4;
+    color: white;
+}
+
+.dataTable table thead tr th {
+    font-weight: normal;
+    padding: 0.5em;
+
+}
+
+.dataTable table tbody {
+    box-shadow: 0 0 0 1px #1896d4 inset;
+}
+
+.dataTable table tbody tr td {
+    padding: 0.5em;
 }
 
