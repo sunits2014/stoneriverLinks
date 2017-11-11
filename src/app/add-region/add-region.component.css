@@ -56,7 +56,24 @@ h2 {
 }
 
 .dataInputSection form {
-    padding: 0.5em;
+    /* padding: 0.5em; */
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dataInputSection form ul {
+    flex-basis: 93%;
+}
+
+.dataInputSection form div.formBtns {
+    flex-basis: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.25em;
+    background-color: white;
+    border-top:1px solid #ccc;
 }
 
 .portalNameForm {
@@ -101,10 +118,29 @@ h2 {
 
 .regionForm li {
     list-style-type: none;
+    flex-basis: 8%;
     display: flex;
     padding: 1em;
     align-items: center;
+    justify-content: space-between;
     /* width: 70%; */
+}
+
+.regionForm li.lastListItem {
+    flex-basis: 84% !important;
+    flex-direction: column;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+}
+
+.lastListItem label {
+    flex-basis: 5% !important;
+}
+
+.regionForm li div {
+    flex-basis: 48%;
+    display: inherit;
+    align-items: inherit;
 }
 
 .regionForm li label {
@@ -127,19 +163,19 @@ h2 {
 
 /* Data Table Styles */
 .dataTable {
-    flex-basis: 70%;
-    padding: 0.5em;
+    width: 100%;
+    /* padding: 0.5em; */
     background-color: #ddd;
-    /* height: 12em; */
+    flex-basis: 95% !important;
     overflow-y: auto;
-    box-shadow: 0 0 0 1px #ccc inset;
+    box-shadow: 0 0 0 1px #1896d4 inset;
     position: relative;
 }
 
 .dataTable table {
     border-collapse: collapse;
     width: 100%;
-    min-height: 100%;
+    /* min-height: 100%; */
 }
 
 .dataTable table thead {
@@ -150,14 +186,19 @@ h2 {
 .dataTable table thead tr th {
     font-weight: normal;
     padding: 0.5em;
-
+    width: 33.3%;
 }
 
 .dataTable table tbody {
-    box-shadow: 0 0 0 1px #1896d4 inset;
+    /* box-shadow: 0 0 0 1px #1896d4 inset; */
 }
 
 .dataTable table tbody tr td {
     padding: 0.5em;
+    width: 33.3%;
+}
+
+.dataTable table tbody tr td input[type="text"] {
+    width: 85%;
 }
 

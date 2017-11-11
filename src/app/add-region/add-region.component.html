@@ -25,30 +25,33 @@
           </select>
           <button class="btn" type="button" (click)="openNewPortalForm()">Add New Portal</button>
         </div>
-        <div>
+        <div *ngIf="updateClicked">
           <label for="selectRegion">Select Region</label>
           <select id="selectRegion" name="selectedRegion" [(ngModel)]="selectedRegion">
             <option *ngFor="let region of selectedPortal" [ngValue]="region">{{region.title}}</option>
           </select>
-          <button class="btn" type="button" (click)="openNewRegionForm()">Add New Region</button>
         </div>
       </div>
       <div class="dataInputSection">
         <form>
           <ul class="regionForm">
             <li>
-              <label for="title">Title:</label>
-              <input class="input" id="title" name="title" [(ngModel)]="selectedRegion.title" [readonly]="onAdd">
-            </li>
-            <li *ngFor="let links of selectedRegion.link, let idx = index">
-              <label for="link">Link {{idx + 1}}:</label>
-              <input class="input" id="{{idx + 1}}" name="link{{idx + 1}}" [(ngModel)]="links.link" [readonly]="onAdd">
-            </li>
-            <li>
-              <label for="desc">Description:</label>
-              <input class="input" id="desc" name="desc" [(ngModel)]="selectedRegion.desc" [readonly]="onAdd">
+              <div>
+                  <label for="title">Title:</label>
+                  <input class="input" id="title" name="title" [(ngModel)]="selectedRegion.title">
+              </div>
+              <div>
+                  <label for="desc">Description:</label>
+                  <input class="input" id="desc" name="desc" [(ngModel)]="selectedRegion.desc">
+              </div>
             </li>
             <li>
+              <div *ngFor="let links of selectedRegion.link, let idx = index">
+                  <label for="link">Link {{idx + 1}}:</label>
+                  <input class="input" id="{{idx + 1}}" name="link{{idx + 1}}" [(ngModel)]="links.link">
+              </div>              
+            </li>
+            <li class="lastListItem">
               <label for="title">Data:</label>
               <div class="dataTable" (scroll)="onScroll($event)">
                 <table>
@@ -62,13 +65,13 @@
                   <tbody>
                     <tr *ngFor="let dataTbl of selectedRegion.data, let idx = index">
                       <td>
-                        <input class="input" type="text" id="{{idx+1}}" name="dataTbl.Servers{{idx+1}}" [(ngModel)]="dataTbl.Servers" [readonly]="onAdd">
+                        <input class="input" type="text" id="{{idx+1}}" name="dataTbl.Servers{{idx+1}}" [(ngModel)]="dataTbl.Servers">
                       </td>
                       <td>
-                        <input class="input" type="text" id="{{idx+1}}" name="dataTbl.ServerName{{idx+1}}" [(ngModel)]="dataTbl.ServerName" [readonly]="onAdd">
+                        <input class="input" type="text" id="{{idx+1}}" name="dataTbl.ServerName{{idx+1}}" [(ngModel)]="dataTbl.ServerName">
                       </td>
                       <td>
-                        <input class="input" type="text" id="{{idx+1}}" name="dataTbl.Address{{idx+1}}" [(ngModel)]="dataTbl.Address" [readonly]="onAdd">
+                        <input class="input" type="text" id="{{idx+1}}" name="dataTbl.Address{{idx+1}}" [(ngModel)]="dataTbl.Address">
                       </td>
                     </tr>                    
                   </tbody>
@@ -77,6 +80,10 @@
               </div>
             </li>
           </ul>
+          <div class="formBtns">
+            <button class="btn" type="submit" *ngIf="!updateClicked">Add Region</button>
+            <button class="btn" type="submit" *ngIf="updateClicked">Update Region</button>
+          </div>          
         </form>
       </div>
     </div>

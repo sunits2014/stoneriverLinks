@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegionService } from '../region.service';
 import { HostListener } from '@angular/core/src/metadata/directives';
 
@@ -11,16 +11,15 @@ import { HostListener } from '@angular/core/src/metadata/directives';
 })
 export class AddRegionComponent implements OnInit {
 
-  constructor(public route: ActivatedRoute, public regiondata: RegionService) {
+  constructor(public route: ActivatedRoute, public regiondata: RegionService, public _router: Router) {
     this.selectedRegion = {};
     this.selectedRegion.title = "";
     this.selectedRegion.desc = "";
     this.selectedRegion.link = [{ "title": "" }, { "link": "" }];
     this.selectedRegion.link[0].link = "";
   }
-
-  public onAdd: boolean;
-
+ 
+  public updateClicked: boolean;
   public routeTitle: any;
   public headerText: string;
   public portals = [];
@@ -28,7 +27,11 @@ export class AddRegionComponent implements OnInit {
     this.routeTitle = this.route.snapshot.data;
     this.headerText = this.routeTitle.title;
     this.regiondata.getPortalData().subscribe(result => this.portals = result);
-    this.onAdd = true;
+    if(this._router.url == "/stoneriver/updateData") {
+      this.updateClicked = true;
+    }else {
+      this.updateClicked = false;
+    }
   }
 
   public addPortal: boolean;
