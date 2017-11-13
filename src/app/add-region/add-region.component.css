@@ -40,12 +40,12 @@ h2 {
 
 .selectPortalSection select {
     margin: 0 1em;
-    width: 12em; 
+    width: 12em;
     padding: 0.25em;
 }
 
 .selectPortalSection select:focus {
-    outline: none;  
+    outline: none;
 }
 
 .dataInputSection {
@@ -73,17 +73,17 @@ h2 {
     align-items: center;
     padding: 0.25em;
     background-color: white;
-    border-top:1px solid #ccc;
+    border-top: 1px solid #ccc;
 }
 
 .portalNameForm {
     position: fixed;
-    top:0;
+    top: 0;
     bottom: 0;
     right: 0;
-    left:0;
+    left: 0;
     z-index: 100;
-    background-color: rgba(0,0,0,0.35);
+    background-color: rgba(0, 0, 0, 0.35);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,7 +102,7 @@ h2 {
 
 .closeModal {
     position: absolute;
-    top:0.5em;
+    top: 0.5em;
     right: 0.5em;
 }
 
@@ -112,8 +112,8 @@ h2 {
 }
 
 .regionForm {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 .regionForm li {
@@ -134,7 +134,7 @@ h2 {
 }
 
 .lastListItem label {
-    flex-basis: 5% !important;
+    flex-basis: 10% !important;
 }
 
 .regionForm li div {
@@ -157,18 +157,20 @@ h2 {
 
 #portalError {
     position: absolute;
-    top:100%;
-    left:0;
+    top: 100%;
+    left: 0;
 }
 
+
 /* Data Table Styles */
+
 .dataTable {
     width: 100%;
     /* padding: 0.5em; */
-    background-color: #ddd;
-    flex-basis: 95% !important;
+    background-color: #fff;
+    flex-basis: 90% !important;
     overflow-y: auto;
-    box-shadow: 0 0 0 1px #1896d4 inset;
+    box-shadow: 0 0 0 1px #999 inset;
     position: relative;
 }
 
@@ -179,7 +181,7 @@ h2 {
 }
 
 .dataTable table thead {
-    background-color: #1896d4;
+    background-color: #999;
     color: white;
 }
 
@@ -187,10 +189,6 @@ h2 {
     font-weight: normal;
     padding: 0.5em;
     width: 33.3%;
-}
-
-.dataTable table tbody {
-    /* box-shadow: 0 0 0 1px #1896d4 inset; */
 }
 
 .dataTable table tbody tr td {
@@ -201,4 +199,3 @@ h2 {
 .dataTable table tbody tr td input[type="text"] {
     width: 85%;
 }
-

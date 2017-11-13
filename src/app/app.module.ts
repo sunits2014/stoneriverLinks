@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HashLocationStrategy, Location, LocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +25,7 @@ import { AddRegionComponent } from './add-region/add-region.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     RouteModule,
     HttpModule,
