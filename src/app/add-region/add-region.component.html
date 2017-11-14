@@ -1,8 +1,8 @@
 <div class="portalNameForm" *ngIf="addPortal">
     <form (submit)="addNewPortal()">
         <span class="closeModal" (click)="closeModal()">
-      <i class="fa fa-times-circle"></i>
-    </span>
+            <i class="fa fa-times-circle"></i>
+        </span>
         <label for="portal_name">Portal Name:</label>
         <div>
             <input class="input" type="text" id="portal_name" name="portal_name" [(ngModel)]="newPortal">
@@ -20,16 +20,16 @@
                 <div>
                     <label for="selectPortal">Select Portal</label>
                     <select id="selectPortal" name="selectedPortal" [(ngModel)]="selectedPortal" (change)="getvalue()">
-            <option [value]=null disabled>Please choose</option>
-            <option *ngFor="let portal of portals" [ngValue]="portal.data">{{portal.title}}</option>
-          </select>
+                        <option [value]=null disabled>Please choose</option>
+                        <option *ngFor="let portal of portals" [ngValue]="portal.data">{{portal.title}}</option>
+                    </select>
                     <button class="btn" type="button" (click)="openNewPortalForm()">Add New Portal</button>
                 </div>
                 <div *ngIf="updateClicked">
                     <label for="selectRegion">Select Region</label>
                     <select id="selectRegion" name="selectedRegion" [(ngModel)]="selectedRegion">
-            <option *ngFor="let region of selectedPortal" [ngValue]="region">{{region.title}}</option>
-          </select>
+                        <option *ngFor="let region of selectedPortal" [ngValue]="region">{{region.title}}</option>
+                    </select>
                 </div>
             </div>
             <div class="dataInputSection">
@@ -48,7 +48,8 @@
                         <li *ngIf="updateClicked">
                             <div *ngFor="let links of selectedRegion.link, let idx = index">
                                 <label for="link">Link {{idx + 1}}:</label>
-                                <input class="input" id="{{idx + 1}}" name="link{{idx + 1}}" [(ngModel)]="links.link" [ngModelOptions]="{standalone: true}" [readonly]="onSelection">
+                                <input class="input" id="{{idx + 1}}" name="link{{idx + 1}}" [(ngModel)]="links.link" [ngModelOptions]="{standalone: true}"
+                                    [readonly]="onSelection">
                             </div>
                         </li>
                         <li *ngIf="!updateClicked">
@@ -63,53 +64,71 @@
                         </li>
                         <li class="lastListItem">
                             <label for="title">Data:</label>
-                            <div *ngIf="updateClicked" class="dataTable" (scroll)="onScroll($event)">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Server</th>
-                                            <th>Server Name</th>
-                                            <th>Address</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let dataTbl of selectedRegion.data, let idx = index">
-                                            <td>
-                                                <input class="input" type="text" id="{{idx+1}}" name="dataTbl.Servers{{idx+1}}" [(ngModel)]="dataTbl.Servers" [ngModelOptions]="{standalone: true}">
-                                            </td>
-                                            <td>
-                                                <input class="input" type="text" id="{{idx+1}}" name="dataTbl.ServerName{{idx+1}}" [(ngModel)]="dataTbl.ServerName" [ngModelOptions]="{standalone: true}">
-                                            </td>
-                                            <td>
-                                                <input class="input" type="text" id="{{idx+1}}" name="dataTbl.Address{{idx+1}}" [(ngModel)]="dataTbl.Address" [ngModelOptions]="{standalone: true}">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div *ngIf="updateClicked" class="dataTable">
+                                <div class="fixedTBH" *ngIf="scrolled" [@slideDown]>
+                                    <ul>
+                                        <li>Server</li>
+                                        <li>Server Name</li>
+                                        <li>Address</li>
+                                    </ul>
+                                </div>
+                                <div class="dataTableContainer" (scroll)="onScroll($event)">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Server</th>
+                                                <th>Server Name</th>
+                                                <th>Address</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let dataTbl of selectedRegion.data, let idx = index">
+                                                <td>
+                                                    <input class="input" type="text" id="{{idx+1}}" name="dataTbl.Servers{{idx+1}}" [(ngModel)]="dataTbl.Servers" [ngModelOptions]="{standalone: true}">
+                                                </td>
+                                                <td>
+                                                    <input class="input" type="text" id="{{idx+1}}" name="dataTbl.ServerName{{idx+1}}" [(ngModel)]="dataTbl.ServerName" [ngModelOptions]="{standalone: true}">
+                                                </td>
+                                                <td>
+                                                    <input class="input" type="text" id="{{idx+1}}" name="dataTbl.Address{{idx+1}}" [(ngModel)]="dataTbl.Address" [ngModelOptions]="{standalone: true}">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            <div *ngIf="!updateClicked" class="dataTable" (scroll)="onScroll($event)">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Server</th>
-                                            <th>Server Name</th>
-                                            <th>Address</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr formArrayName="serverDetails" *ngFor="let rows of serverDetails.controls, let idx = index">
-                                            <td>
-                                                <input (change)="addRow($event)" class="input" type="text" [readonly]="onSelection">
-                                            </td>
-                                            <td>
-                                                <input class="input" type="text" [readonly]="onSelection">
-                                            </td>
-                                            <td>
-                                                <input class="input" type="text" [readonly]="onSelection">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <div *ngIf="!updateClicked" class="dataTable">
+                                <div class="fixedTBH" *ngIf="scrolled" [@slideDown]>
+                                    <ul>
+                                        <li>Server</li>
+                                        <li>Server Name</li>
+                                        <li>Address</li>
+                                    </ul>
+                                </div>
+                                <div class="dataTableContainer" (scroll)="onScroll($event)">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Server</th>
+                                                <th>Server Name</th>
+                                                <th>Address</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr formArrayName="serverDetails" *ngFor="let rows of serverDetails.controls, let idx = index">
+                                                <td>
+                                                    <input (change)="addRow($event)" class="input" type="text" [readonly]="onSelection">
+                                                </td>
+                                                <td>
+                                                    <input class="input" type="text" [readonly]="onSelection">
+                                                </td>
+                                                <td>
+                                                    <input class="input" type="text" [readonly]="onSelection">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </li>
                     </ul>

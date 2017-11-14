@@ -3,13 +3,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RegionService } from '../region.service';
 import { HostListener } from '@angular/core/src/metadata/directives';
 import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@angular/forms';
-import { debug } from 'util';
+import { animate, state, transition, trigger, style } from '@angular/animations';
 
 @Component({
   selector: 'app-add-region',
   templateUrl: './add-region.component.html',
   styleUrls: ['./add-region.component.css'],
-  providers: [RegionService]
+  providers: [RegionService],
+  animations: [
+    trigger('slideDown', [
+      transition(':enter',[
+        style({ 'top': '-100%'}),
+        animate('500ms', style({ 'top': '0'}))
+      ]),
+      transition(':leave',[
+        style({ 'top': '0%'}),
+        animate('500ms', style({ 'top': '-100%'}))
+      ])
+    ])
+  ]
 })
 export class AddRegionComponent implements OnInit, AfterContentChecked {
 
@@ -59,7 +71,6 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
 
   //Looping through the Form Array Control on demand
   public addRow(event) {
-    debugger;
     if (event.srcElement.value != "") {
       this.serverDetails.push(this.addServerDetails());
     } else if(event.srcElement.value == ""){
@@ -112,7 +123,13 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     }
   }
 
+  public scrolled: boolean;
   public onScroll(event) {
-    console.log(event.target.offsetTop);
+    let fromTop = event.srcElement.scrollTop;
+    if(fromTop > 25) {
+      this.scrolled = true;
+    }else if(fromTop < 24) {
+      this.scrolled = false;
+    }
   }
 }
