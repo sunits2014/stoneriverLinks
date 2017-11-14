@@ -9,19 +9,7 @@ import { animate, state, transition, trigger, style } from '@angular/animations'
   selector: 'app-add-region',
   templateUrl: './add-region.component.html',
   styleUrls: ['./add-region.component.css'],
-  providers: [RegionService],
-  animations: [
-    trigger('slideDown', [
-      transition(':enter',[
-        style({ 'top': '-100%'}),
-        animate('500ms', style({ 'top': '0'}))
-      ]),
-      transition(':leave',[
-        style({ 'top': '0%'}),
-        animate('500ms', style({ 'top': '-100%'}))
-      ])
-    ])
-  ]
+  providers: [RegionService]
 })
 export class AddRegionComponent implements OnInit, AfterContentChecked {
 
@@ -120,16 +108,6 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     else {
       this.portals.push({ 'title': this.newPortal });
       this.newPortal = "";
-    }
-  }
-
-  public scrolled: boolean;
-  public onScroll(event) {
-    let fromTop = event.srcElement.scrollTop;
-    if(fromTop > 25) {
-      this.scrolled = true;
-    }else if(fromTop < 24) {
-      this.scrolled = false;
     }
   }
 }

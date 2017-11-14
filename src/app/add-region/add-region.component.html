@@ -65,14 +65,14 @@
                         <li class="lastListItem">
                             <label for="title">Data:</label>
                             <div *ngIf="updateClicked" class="dataTable">
-                                <div class="fixedTBH" *ngIf="scrolled" [@slideDown]>
+                                <div class="fixedTBH">
                                     <ul>
                                         <li>Server</li>
                                         <li>Server Name</li>
                                         <li>Address</li>
                                     </ul>
                                 </div>
-                                <div class="dataTableContainer" (scroll)="onScroll($event)">
+                                <div class="dataTableContainer">
                                     <table>
                                         <thead>
                                             <tr>
@@ -98,14 +98,14 @@
                                 </div>
                             </div>
                             <div *ngIf="!updateClicked" class="dataTable">
-                                <div class="fixedTBH" *ngIf="scrolled" [@slideDown]>
+                                <div class="fixedTBH">
                                     <ul>
                                         <li>Server</li>
                                         <li>Server Name</li>
                                         <li>Address</li>
                                     </ul>
                                 </div>
-                                <div class="dataTableContainer" (scroll)="onScroll($event)">
+                                <div class="dataTableContainer">
                                     <table>
                                         <thead>
                                             <tr>

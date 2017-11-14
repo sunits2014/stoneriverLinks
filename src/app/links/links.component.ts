@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LifeportraitService } from '../lifeportrait.service';
+import { RegionService } from '../region.service';
 import { animate, state, transition, trigger, style } from '@angular/animations';
 import { Router } from '@angular/router';
 
@@ -7,38 +8,39 @@ import { Router } from '@angular/router';
   selector: 'app-links',
   templateUrl: './links.component.html',
   styleUrls: ['./links.component.css'],
-  providers: [LifeportraitService],
+  providers: [LifeportraitService, RegionService],
   animations: [
-    trigger('fadeAnim',[
-      transition(':enter',[
+    trigger('fadeAnim', [
+      transition(':enter', [
         style({ top: '0%' }),
         animate('150ms', style({ top: '105%' }))
       ]),
-      transition(':leave',[
-        style({ opacity: '1'}),
-        animate('150ms', style({ opacity: '0'}))
+      transition(':leave', [
+        style({ opacity: '1' }),
+        animate('150ms', style({ opacity: '0' }))
       ])
     ])
-  ]  
+  ]
 })
 export class LinksComponent implements OnInit {
 
-  constructor(public getLifeData: LifeportraitService, public _route: Router) { }
+  constructor(public getLifeData: LifeportraitService, public _route: Router, public regiondata: RegionService) { }
 
   ngOnInit() {
     let routeText = this._route.url;
-    if(routeText == "/stoneriver/addData") {
+    if (routeText == "/stoneriver/addData") {
       this.spanText = "Add Data";
-    }else if(routeText == "/stoneriver/updateData") {
+    } else if (routeText == "/stoneriver/updateData") {
       this.spanText = "Update Data";
-    }else if(routeText == "/stoneriver/deleteData") {
+    } else if (routeText == "/stoneriver/deleteData") {
       this.spanText = "Delete Data"
-    }else {
+    } else {
       this.spanText = "Manage Data"
     }
+    this.regiondata.getPortalData().subscribe(result => this.portals = result);
   }
 
-
+  public portals = [];
   public link1: boolean;
   public link2: boolean;
   public selectLifeSuite: string;
@@ -59,6 +61,7 @@ export class LinksComponent implements OnInit {
   }
 
   public getTitle(event) {
+    debugger;
     if (event.srcElement.text == "Add Data" || event.srcElement.text == "Update Data" || event.srcElement.text == "Delete Data") {
       this.noMenu = false;
       this.onMenuOpen = false;
@@ -68,5 +71,4 @@ export class LinksComponent implements OnInit {
       this.spanText = "Manage Data"
     }
   }
-
 }

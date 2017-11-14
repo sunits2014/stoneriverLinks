@@ -25,15 +25,9 @@
         <div class="right_content">
             <div class="left_rightcontent">
                 <ul>
-                    <li>
-                        <a class="firstChild" routerLink="home" routerLinkActive="highlight" (click)="getTitle($event)">Home</a>
-                    </li>
-                    <li>
-                        <a class="firstChild" routerLink="lifeportrait" routerLinkActive="highlight" (click)="getTitle($event)">Life Portrait</a>
-                    </li>
-                    <li>
-                        <a class="firstChild" routerLink="lifesuite" routerLinkActive="highlight" (click)="getTitle($event)">Life Suite</a>
-                    </li>
+                    <li *ngFor="let portal of portals, let idx = index">
+                        <a class="firstChild" [routerLink]="portal.nav" routerLinkActive="highlight">{{portal.title}}</a>
+                    </li>                    
                 </ul>
             </div>
             <div class="right_rightcontent">

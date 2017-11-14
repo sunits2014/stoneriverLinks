@@ -1,12 +1,21 @@
 [
     {
+        "title":"Home",
+        "nav": "home",
+        "data": [
+            "No data available"
+        ]
+    },
+    {
         "title": "Life Portrait",
+        "nav": "lifeportrait",
         "data": [
             "No data available"
         ]
     },
     {
         "title": "Life Suite",
+        "nav": "lifesuite",
         "data": [
             {
                 "title": "QA Region",
