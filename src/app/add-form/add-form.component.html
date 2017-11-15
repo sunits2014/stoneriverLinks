@@ -1,0 +1,41 @@
+<div class="portalNameForm" [ngSwitch]="switchForm">
+  <form *ngSwitchCase="'addForm'">
+    <span class="closeModal" (click)="closeModal()">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <label for="portal_name">Portal Name:</label>
+    <div>
+      <input class="input" type="text" id="portal_name" name="portal_name" [(ngModel)]="newPortal">
+      <span class="iconSpan">
+        <span>
+          <small>Save Region</small>
+          <i class="fa fa-save" (click)="addNewPortal()"></i>
+        </span>
+      </span>
+      <span class="errorStyle" id="portalError" *ngIf="blankInput">Please provide an input.</span>
+    </div>
+  </form>
+  <div *ngSwitchCase="'deleteForm'" class="deleteForm">
+    <span class="closeModal" (click)="closeModal()">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="tableDiv">
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Portal</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let portal of selectedPortalObj, let idx = index">
+            <td>{{idx + 1}}</td>
+            <td>{{portal.title}}</td>
+            <td><i class="fa fa-trash" (click)="delObj(portal)"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

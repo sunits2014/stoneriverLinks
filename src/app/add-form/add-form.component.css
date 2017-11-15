@@ -1,0 +1,94 @@
+.portalNameForm {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.portalNameForm form {
+    background-color: white;
+    padding: 2em;
+    border-radius: 4px;
+    position: relative;
+}
+
+.portalNameForm form div {
+    position: relative;
+}
+
+.closeModal {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+}
+
+.closeModal .fa {
+    color: #666;
+    cursor: pointer;
+}
+
+.errorStyle {
+    color: indianred;
+    position: absolute;
+}
+
+.deleteForm {
+    width: 50%;
+    background-color: white;
+    border-radius: 4px;
+    flex-basis: 50%;
+    padding: 2em;
+    position: relative;
+}
+
+.deleteForm div.tableDiv {
+    border: 1px solid #0f774d;
+    min-height: 100%;
+}
+
+.deleteForm table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.deleteForm table thead {
+    background-color: #999;
+}
+
+.deleteForm table thead tr th {
+    padding: 0.5em;
+    font-weight: normal;
+    color: white;
+}
+
+.deleteForm table thead tr th:nth-child(1), .deleteForm table tbody tr td:nth-child(1) {
+    width: 15%;
+    padding: 0.5em;
+    text-align: center;
+}
+
+.deleteForm table thead tr th:nth-child(2), .deleteForm table tbody tr td:nth-child(2) {
+    width: 70%;
+    padding: 0.5em;
+    text-align: left;
+}
+
+.deleteForm table thead tr th:nth-child(3), .deleteForm table tbody tr td:nth-child(3) {
+    width: 15%;
+    padding: 0.5em;
+    text-align: center;
+}
+
+.deleteForm table tbody tr:nth-child(even) {
+    background-color: #eee;
+}
+
+.deleteForm table tbody tr td .fa {
+    color: indianred;
+    cursor: pointer;
+}

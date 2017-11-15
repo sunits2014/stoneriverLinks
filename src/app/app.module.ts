@@ -13,6 +13,7 @@ import { LifeportraitComponent } from './lifeportrait/lifeportrait.component';
 import { LifesuiteComponent } from './lifesuite/lifesuite.component';
 import { HomeComponent } from './home/home.component';
 import { AddRegionComponent } from './add-region/add-region.component';
+import { AddFormComponent } from './add-form/add-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AddRegionComponent } from './add-region/add-region.component';
     LifeportraitComponent,
     LifesuiteComponent,
     HomeComponent,
-    AddRegionComponent
+    AddRegionComponent,
+    AddFormComponent
   ],
   imports: [
     BrowserModule,

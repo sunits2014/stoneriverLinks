@@ -20,6 +20,10 @@ html, body {
     line-height: 100%;
 }
 
+.btn .fa {
+    padding: 0 0.25em;
+}
+
 .btn:focus, .input:focus {
     outline: none;
 }
@@ -264,3 +268,55 @@ html, body {
     background-color: transparent;
     z-index: 1;
 }
+
+.iconSpan>span {
+    position: relative;
+}
+
+.iconSpan>span>small {
+    position: absolute;
+    left: 0;
+    font-size: 10px;
+    right: 0;
+    border-radius: 4px;
+    color: white;
+    width: 7em;
+    bottom: 150%;
+    background-color: #0f477d;
+    padding: 0.5em;
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.iconSpan span small:after {
+    content: "\F0D7";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 100%;
+    color: #0f477d;
+    font-size: 1.5em;
+    left: 12%;
+    line-height: 3px;
+}
+
+.iconSpan>span:hover>small {
+    display: block;
+}
+
+.iconSpan>span>.fa {
+    border-radius: 100%;
+    padding: 0.5em;
+    background-color: #fff;
+    box-shadow: 0 0 0 1px #0f477d inset;
+    color: #0f477d;
+    width: 1em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.iconSpan>span>.fa:active {
+    background-color: #0f477d;
+    color:white;
+    box-shadow: 0 0 0 1px #0f477d inset;
+}
+

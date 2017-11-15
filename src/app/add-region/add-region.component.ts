@@ -61,7 +61,7 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
   public addRow(event) {
     if (event.srcElement.value != "") {
       this.serverDetails.push(this.addServerDetails());
-    } else if(event.srcElement.value == ""){
+    } else if (event.srcElement.value == "") {
       this.serverDetails.controls.splice(this.serverDetails.controls.indexOf(event), 1);
     }
   }
@@ -77,15 +77,20 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
   public addPortal: boolean;
   public addRegion: boolean;
 
-  public openNewPortalForm() {
+  public modalOpenValue: string;
+  public selectedPortalObj: object;
+  public openForm(event) { 
     this.addPortal = true;
+    if(event.target.id == "addnewportal") {      
+      this.modalOpenValue = "addClicked";
+    }else if(event.target.id == "deleteportal") {
+      this.selectedPortalObj = this.portals;
+      this.modalOpenValue = "deleteClicked";
+    }
   }
+
   public openNewRegionForm() {
     this.addRegion = true;
-  }
-  public closeModal() {
-    this.addPortal = false;
-    this.blankInput = false;
   }
 
   public selectedPortal: any = null;
@@ -98,16 +103,12 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     console.log(this.selectedRegion);
   }
 
-  public newPortal: string;
-  public blankInput: boolean;
-  public addNewPortal() {
-    if (this.newPortal == null || "") {
-      this.blankInput = true;
-
-    }
-    else {
-      this.portals.push({ 'title': this.newPortal });
-      this.newPortal = "";
-    }
+  public closeModalPop(boolValue) {
+    this.addPortal = boolValue;
   }
+
+  // public getNewObj(event) {
+  //   console.log(event);
+  //   // this.portals = event;
+  // }
 }
