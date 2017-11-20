@@ -14,6 +14,7 @@ import { LifesuiteComponent } from './lifesuite/lifesuite.component';
 import { HomeComponent } from './home/home.component';
 import { AddRegionComponent } from './add-region/add-region.component';
 import { AddFormComponent } from './add-form/add-form.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AddFormComponent } from './add-form/add-form.component';
     LifesuiteComponent,
     HomeComponent,
     AddRegionComponent,
-    AddFormComponent
+    AddFormComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

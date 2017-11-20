@@ -12,6 +12,7 @@ import { animate, state, transition, trigger, style } from '@angular/animations'
   providers: [RegionService]
 })
 export class AddRegionComponent implements OnInit, AfterContentChecked {
+  public deleteBtn: any;
 
   constructor(public route: ActivatedRoute, public regiondata: RegionService, public _router: Router, public fb: FormBuilder) {
     this.selectedRegion = {};
@@ -46,6 +47,7 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     this.regionDataForm = this.fb.group({
       serverDetails: this.fb.array([this.addServerDetails()])
     });
+    this.updateSelected = true;
   }
 
   //Adding the template to the Form Array
@@ -71,6 +73,9 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
       this.onSelection = false;
     } else if (this._router.url == "/stoneriver/addData" && this.selectedPortal != null) {
       this.onSelection = false;
+    };
+    if(this.selectedRegion.title != "") {
+      this.updateSelected = false;
     }
   }
 
@@ -84,8 +89,9 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     if(event.target.id == "addnewportal") {      
       this.modalOpenValue = "addClicked";
     }else if(event.target.id == "deleteportal") {
-      this.selectedPortalObj = this.portals;
+      this.selectedPortalObj = {portalArray:[this.portals]};
       this.modalOpenValue = "deleteClicked";
+      this.deleteBtn = {title: event.target.id, obj: this.selectedRegion};
     }
   }
 
@@ -95,7 +101,7 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
 
   public selectedPortal: any = null;
   getvalue() {
-    console.log(this.selectedPortal)
+    this.updateSelected = true;
   }
 
   public selectedRegion: any;
@@ -106,9 +112,30 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
   public closeModalPop(boolValue) {
     this.addPortal = boolValue;
   }
+  
+  public deleteClicked: boolean;
+  public getProperties: object;
+  public portalIndexClicked: any;
+  public getDialogBoolValue(event){
+    this.deleteClicked = event.boolValue;
+    this.getProperties = event.title;
+    console.log(event);
+    this.portalIndexClicked = event.clickIndex;
+  }
 
+  public closeDialog(event) {
+    this.deleteClicked = event;
+  }
   // public getNewObj(event) {
   //   console.log(event);
   //   // this.portals = event;
   // }
+
+  public updateSelected: boolean;
+  public deleteRegion(event) {
+    console.log(this.selectedRegion);
+    this.deleteClicked = true;
+    this.getProperties = this.selectedRegion.title;
+    this.deleteBtn = {title: event.target.id, obj: this.selectedRegion};;
+  }
 }

@@ -29,7 +29,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let portal of selectedPortalObj, let idx = index">
+          <tr *ngFor="let portal of selectedPortalObj.portalArray[0], let idx = index">
             <td>{{idx + 1}}</td>
             <td>{{portal.title}}</td>
             <td><i class="fa fa-trash" (click)="delObj(portal)"></i></td>

@@ -25,8 +25,9 @@ export class AddFormComponent implements OnInit, AfterContentChecked {
 
   @Output() closeModalOutput: EventEmitter<boolean> = new EventEmitter();
   @Output() deleteObj: EventEmitter<any> = new EventEmitter();
+  @Output() dialogBoolValue: EventEmitter<any> = new EventEmitter();
   @Input() modalValue: string;
-  @Input() selectedPortalObj: any[];
+  @Input() selectedPortalObj: any;
 
   
   public addPortal: boolean;  
@@ -48,9 +49,8 @@ export class AddFormComponent implements OnInit, AfterContentChecked {
   }
 
   public delObj(event) {
-    let newObj = [this.selectedPortalObj.splice(this.selectedPortalObj.indexOf(event),1)]
-    console.log(newObj)
-    this.deleteObj.emit(newObj);
+    debugger;
+    this.dialogBoolValue.emit({clickIndex: event, boolValue:true, title: event.title});
   }
 
 }
