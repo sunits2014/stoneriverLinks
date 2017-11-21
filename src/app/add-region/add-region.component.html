@@ -60,7 +60,7 @@
                             </div>
                         </li>
                         <li class="lastListItem">
-                            <label for="title">Data:</label>
+                            <label for="title">Data:<a (click)="addRow($event)">Add Row</a></label>
                             <div *ngIf="updateClicked" class="dataTable">
                                 <div class="fixedTBH">
                                     <ul>
@@ -114,7 +114,7 @@
                                         <tbody>
                                             <tr formArrayName="serverDetails" *ngFor="let rows of serverDetails.controls, let idx = index">
                                                 <td>
-                                                    <input (change)="addRow($event)" class="input" type="text" [readonly]="onSelection">
+                                                    <input class="input" type="text" [readonly]="onSelection">
                                                 </td>
                                                 <td>
                                                     <input class="input" type="text" [readonly]="onSelection">
@@ -130,7 +130,7 @@
                         </li>
                     </ul>
                     <div class="formBtns">
-                        <button class="btn" type="submit" *ngIf="!updateClicked" (click)="addRegion()">Add Region</button>
+                        <button class="btn" type="submit" *ngIf="!updateClicked" (click)="addRegionData()">Add Region</button>
                         <button class="btn" type="submit" *ngIf="updateClicked" (click)="updateRegion()">Update Region</button>
                         <button class="btn" type="submit" *ngIf="updateClicked" id="deleteRegion" (click)="deleteRegion($event)" [disabled]="updateSelected">Delete Region</button>                        
                     </div>

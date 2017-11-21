@@ -116,7 +116,15 @@ app-add-form {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+}
+
+.lastListItem label a {
+    margin-left: 0.5em;
+    text-decoration: underline;
+    color: blue;
+    font-size: 12px !important;
+    cursor: pointer
 }
 
 .regionForm li div {

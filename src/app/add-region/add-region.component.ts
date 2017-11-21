@@ -4,6 +4,8 @@ import { RegionService } from '../region.service';
 import { HostListener } from '@angular/core/src/metadata/directives';
 import { FormGroup, FormControl, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { animate, state, transition, trigger, style } from '@angular/animations';
+import { concat } from 'rxjs/operator/concat';
+import { concatAll } from 'rxjs/operator/concatAll';
 
 @Component({
   selector: 'app-add-region',
@@ -28,6 +30,8 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
   public headerText: string;
   public portals = [];
   public onSelection: boolean;
+  public link1: string;
+  public link2: string;
 
   //Returning the Form Array Default Control
   get serverDetails(): FormArray {
@@ -61,10 +65,13 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
 
   //Looping through the Form Array Control on demand
   public addRow(event) {
-    if (event.srcElement.value != "") {
+    // if (event.srcElement.value != "") {
+    //   this.serverDetails.push(this.addServerDetails());
+    // } else if (event.srcElement.value == "") {
+    //   this.serverDetails.controls.splice(this.serverDetails.controls.indexOf(event), 1);
+    // };
+    if(this.onSelection != true) {
       this.serverDetails.push(this.addServerDetails());
-    } else if (event.srcElement.value == "") {
-      this.serverDetails.controls.splice(this.serverDetails.controls.indexOf(event), 1);
     }
   }
 
@@ -137,5 +144,17 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     this.deleteClicked = true;
     this.getProperties = this.selectedRegion.title;
     this.deleteBtn = {title: event.target.id, obj: this.selectedRegion};;
+  }
+
+  public addRegionData() {
+    let saveObj: object = {
+      selPortal: this.selectedPortal,
+      regionTitle: this.selectedRegion.title,
+      regionDesc: this.selectedRegion.desc,
+      regionLink: this.link1,
+      regionAltLink: this.link2,
+      serverData: this.regionDataForm.controls['serverDetails'].value
+    }
+    console.log(saveObj);
   }
 }
