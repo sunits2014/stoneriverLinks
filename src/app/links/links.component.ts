@@ -23,52 +23,49 @@ import { Router } from '@angular/router';
   ]
 })
 export class LinksComponent implements OnInit {
-
-  constructor(public getLifeData: LifeportraitService, public _route: Router, public regiondata: RegionService) { }
-
-  ngOnInit() {
-    let routeText = this._route.url;
-    if (routeText == "/stoneriver/addData") {
-      this.spanText = "Add Data";
-    } else if (routeText == "/stoneriver/updateData") {
-      this.spanText = "Update Data";
-    } else if (routeText == "/stoneriver/deleteData") {
-      this.spanText = "Delete Data"
-    } else {
-      this.spanText = "Manage Data"
-    }
-    this.regiondata.getPortalData().subscribe(result => this.portals = result);
-  }
-
   public portals = [];
   public link1: boolean;
   public link2: boolean;
   public selectLifeSuite: string;
-  public spanText: string = "";
+  public spanText: string;
 
   public noMenu: boolean;
   public onMenuOpen: boolean;
+  constructor(public getLifeData: LifeportraitService, public _route: Router, public regiondata: RegionService) { }
+
+  ngOnInit() {
+    const routeText = this._route.url;
+    if (routeText === '/stoneriver/addData') {
+      this.spanText = 'Add Data';
+    } else if (routeText === '/stoneriver/updateData') {
+      this.spanText = 'Update Data';
+    } else if (routeText === '/stoneriver/deleteData') {
+      this.spanText = 'Delete Data';
+    } else {
+      this.spanText = 'Manage Data';
+    }
+    this.regiondata.getPortalData().subscribe(result => this.portals = result);
+  }
+
   public showMenu() {
     this.noMenu = !this.noMenu;
     this.onMenuOpen = true;
   }
 
   public hideMenu() {
-    if (this.noMenu == true) {
+    if (this.noMenu === true) {
       this.noMenu = false;
       this.onMenuOpen = false;
     }
   }
 
   public getTitle(event) {
-    debugger;
-    if (event.srcElement.text == "Add Data" || event.srcElement.text == "Update Data" || event.srcElement.text == "Delete Data") {
+    if (event.srcElement.text === 'Add Data' || event.srcElement.text === 'Update Data' || event.srcElement.text === 'Delete Data') {
       this.noMenu = false;
       this.onMenuOpen = false;
       this.spanText = event.srcElement.text;
-    }
-    else {
-      this.spanText = "Manage Data"
+    } else {
+      this.spanText = 'Manage Data';
     }
   }
 }

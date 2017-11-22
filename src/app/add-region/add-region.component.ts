@@ -18,10 +18,10 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
 
   constructor(public route: ActivatedRoute, public regiondata: RegionService, public _router: Router, public fb: FormBuilder) {
     this.selectedRegion = {};
-    this.selectedRegion.title = "";
-    this.selectedRegion.desc = "";
-    this.selectedRegion.link = [{ "title": "" }, { "link": "" }];
-    this.selectedRegion.link[0].link = "";
+    this.selectedRegion.title = '';
+    this.selectedRegion.desc = '';
+    this.selectedRegion.link = [{ 'title': '' }, { 'link': '' }];
+    this.selectedRegion.link[0].link = '';
   }
 
   public regionDataForm: FormGroup;
@@ -33,7 +33,7 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
   public link1: string;
   public link2: string;
 
-  //Returning the Form Array Default Control
+  // Returning the Form Array Default Control
   get serverDetails(): FormArray {
     return <FormArray>this.regionDataForm.get('serverDetails');
   }
@@ -43,7 +43,7 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     this.headerText = this.routeTitle.title;
     this.regiondata.getPortalData().subscribe(result => this.portals = result);
     this.onSelection = true;
-    if (this._router.url == "/stoneriver/updateData") {
+    if (this._router.url === '/stoneriver/updateData') {
       this.updateClicked = true;
     } else {
       this.updateClicked = false;
@@ -54,34 +54,34 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     this.updateSelected = true;
   }
 
-  //Adding the template to the Form Array
+  // Adding the template to the Form Array
   public addServerDetails(): FormGroup {
     return this.fb.group({
       server: new FormControl(null),
       serverName: new FormControl(null),
       address: new FormControl(null)
-    })
+    });
   }
 
-  //Looping through the Form Array Control on demand
+  // Looping through the Form Array Control on demand
   public addRow(event) {
     // if (event.srcElement.value != "") {
     //   this.serverDetails.push(this.addServerDetails());
     // } else if (event.srcElement.value == "") {
     //   this.serverDetails.controls.splice(this.serverDetails.controls.indexOf(event), 1);
     // };
-    if(this.onSelection != true) {
+    if (this.onSelection !== true) {
       this.serverDetails.push(this.addServerDetails());
     }
   }
 
   ngAfterContentChecked() {
-    if (this._router.url == "/stoneriver/updateData" && this.selectedPortal != null && this.selectedRegion.title != "") {
+    if (this._router.url == '/stoneriver/updateData' && this.selectedPortal != null && this.selectedRegion.title != '') {
       this.onSelection = false;
-    } else if (this._router.url == "/stoneriver/addData" && this.selectedPortal != null) {
+    } else if (this._router.url == '/stoneriver/addData' && this.selectedPortal != null) {
       this.onSelection = false;
     };
-    if(this.selectedRegion.title != "") {
+    if(this.selectedRegion.title != '') {
       this.updateSelected = false;
     }
   }
@@ -93,11 +93,11 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
   public selectedPortalObj: object;
   public openForm(event) { 
     this.addPortal = true;
-    if(event.target.id == "addnewportal") {      
-      this.modalOpenValue = "addClicked";
-    }else if(event.target.id == "deleteportal") {
+    if(event.target.id == 'addnewportal') {      
+      this.modalOpenValue = 'addClicked';
+    }else if(event.target.id == 'deleteportal') {
       this.selectedPortalObj = {portalArray:[this.portals]};
-      this.modalOpenValue = "deleteClicked";
+      this.modalOpenValue = 'deleteClicked';
       this.deleteBtn = {title: event.target.id, obj: this.selectedRegion};
     }
   }
