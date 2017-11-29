@@ -11,8 +11,8 @@
           <small>Save Region</small>
           <i class="fa fa-save" (click)="addNewPortal()"></i>
         </span>
-      </span>
-      <span class="errorStyle" id="portalError" *ngIf="blankInput">Please provide an input.</span>
+      </span><br><br>
+      <span id="portalError" *ngIf="responseInput" [innerText]="responseText" [ngStyle]="responseStyle"></span>
     </div>
   </form>
   <div *ngSwitchCase="'deleteForm'" class="deleteForm">
@@ -29,9 +29,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let portal of selectedPortalObj.portalArray[0], let idx = index">
+          <tr *ngFor="let portal of apiservice.Portals, let idx = index">
             <td>{{idx + 1}}</td>
-            <td>{{portal.title}}</td>
+            <td>{{portal.Portal_Name}}</td>
             <td><i class="fa fa-trash" (click)="delObj(portal)"></i></td>
           </tr>
         </tbody>

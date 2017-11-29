@@ -1,5 +1,6 @@
 :host {
     flex-basis: 100%;
+    width: 100%;
 }
 
 .addRegion {
@@ -98,7 +99,7 @@ app-add-form {
     list-style-type: none;
     flex-basis: 8%;
     display: flex;
-    padding: 1em;
+    padding: 0.5em;
     align-items: center;
     justify-content: space-between;
     /* width: 70%; */
@@ -175,12 +176,12 @@ app-add-form {
 .dataTable table thead tr th {
     font-weight: normal;
     padding: 0.5em;
-    width: 33.3%;
+    width: 25%;
 }
 
 .dataTable table tbody tr td {
     padding: 0.5em;
-    width: 33.3%;
+    width: 25%;
 }
 
 .dataTable table tbody tr:nth-child(odd) {

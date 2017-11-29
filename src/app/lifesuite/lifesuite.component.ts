@@ -7,20 +7,19 @@ import { ElementRef } from '@angular/core';
   selector: 'app-lifesuite',
   templateUrl: './lifesuite.component.html',
   styleUrls: ['./lifesuite.component.css'],
-  providers: [LifeportraitService]
 
 })
 export class LifesuiteComponent implements OnInit {
 
   // public linkValue;
 
-  constructor(public getLifeData: LifeportraitService, public elm: ElementRef) { 
+  constructor(public elm: ElementRef) { 
     // this.linkValue = elm.nativeElement;
     // console.log(this.linkValue);
   }
 
   ngOnInit() {
-    this.getLifeData.getLifeSuite().subscribe(result => this.lifeSuiteArray = result);
+    // this.getLifeData.getLifeSuite().subscribe(result => this.lifeSuiteArray = result);
   }
 
   public lifeSuiteArray = [];

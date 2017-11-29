@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LifeportraitService } from '../lifeportrait.service';
-import { RegionService } from '../region.service';
+import { APIService } from '../region.service';
 import { animate, state, transition, trigger, style } from '@angular/animations';
 import { Router } from '@angular/router';
 
@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   selector: 'app-links',
   templateUrl: './links.component.html',
   styleUrls: ['./links.component.css'],
-  providers: [LifeportraitService, RegionService],
   animations: [
     trigger('fadeAnim', [
       transition(':enter', [
@@ -23,31 +22,56 @@ import { Router } from '@angular/router';
   ]
 })
 export class LinksComponent implements OnInit {
-
-  constructor(public getLifeData: LifeportraitService, public _route: Router, public regiondata: RegionService) { }
-
-  ngOnInit() {
-    let routeText = this._route.url;
-    if (routeText == "/stoneriver/addData") {
-      this.spanText = "Add Data";
-    } else if (routeText == "/stoneriver/updateData") {
-      this.spanText = "Update Data";
-    } else if (routeText == "/stoneriver/deleteData") {
-      this.spanText = "Delete Data"
-    } else {
-      this.spanText = "Manage Data"
-    }
-    this.regiondata.getPortalData().subscribe(result => this.portals = result);
-  }
-
+  public onLoad: boolean;
+  public homeContent: boolean;
+  public viewScreen: boolean;
+  public addScreen: boolean;
   public portals = [];
   public link1: boolean;
   public link2: boolean;
   public selectLifeSuite: string;
   public spanText: string = "";
-
   public noMenu: boolean;
   public onMenuOpen: boolean;
+  public menuObject: object;
+
+  constructor(public _route: Router, public apiservice: APIService) { }
+
+  ngOnInit() {
+    this.homeContent = true;
+    let routeText = this._route.url;
+    if (routeText == "/stoneriver/home") {
+      this.spanText = "Manage Data";
+      this.homeContent = true;
+      this.viewScreen = false;
+      this.addScreen = false;
+    } else if(routeText == "/stoneriver/addData") {
+      this.spanText = "Add Data";
+      this.homeContent = false;
+      this.viewScreen = false;
+      this.addScreen = true;
+    } else if (routeText == "/stoneriver/updateData") {
+      this.spanText = "Update Data";
+      this.homeContent = false;
+      this.viewScreen = false;
+      this.addScreen = true;
+    } else if (routeText == "/stoneriver/deleteData") {
+      this.spanText = "Delete Data"
+    } else {
+      this.spanText = "Manage Data"
+    }
+    // debugger;
+    // this.regiondata.getPortalData().subscribe(result => console.log(result));
+    // this.regiondata.getPortalData().subscribe(result => console.log(result));
+    // this.regiondata.getPortalData().subscribe(result => this.portals = result.Portals);
+    this.onLoad = true;
+    this.apiservice.getPortalData().subscribe(data => {
+      this.apiservice.Portals = data.Portals;
+      this.onLoad = false;
+      console.log(data.Portals)
+    }, () => this.onLoad = false);
+  }
+
   public showMenu() {
     this.noMenu = !this.noMenu;
     this.onMenuOpen = true;
@@ -60,15 +84,23 @@ export class LinksComponent implements OnInit {
     }
   }
 
-  public getTitle(event) {
+  public getTitle(event,portalObject) {
     debugger;
     if (event.srcElement.text == "Add Data" || event.srcElement.text == "Update Data" || event.srcElement.text == "Delete Data") {
       this.noMenu = false;
       this.onMenuOpen = false;
       this.spanText = event.srcElement.text;
+      this.homeContent = false;
+      this.viewScreen = false;
+      this.addScreen = true;
     }
     else {
       this.spanText = "Manage Data"
+      this.homeContent = false;
+      this.viewScreen = true;
+      this.addScreen = false;
     }
+    this.homeContent = false;
+    this.menuObject = portalObject
   }
 }

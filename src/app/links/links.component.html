@@ -1,3 +1,4 @@
+<app-block-ui *ngIf="onLoad" [@fadeAnim]></app-block-ui>
 <div class="mainContainer">
     <div class="image">
         <img src="assets/images/bg.jpg">
@@ -5,35 +6,61 @@
     <div class="content">
         <div class="left_content">
             <img src="assets/images/sr_logo2.png">
-            <div class="drpdwnList">
-                <span [innerText]="spanText"></span>
-                <i class="fa fa-angle-down" (click)="showMenu()" [class.drpdwnListactive]="onMenuOpen"></i>
-                <div class="blockUI" (click)="hideMenu()" *ngIf="noMenu"></div>
-                <ul class="actionList" [@fadeAnim] *ngIf="noMenu">
-                    <li>
-                        <a [routerLink]="['addData']" routerLinkActive="activeLinkColor" (click)="getTitle($event)">Add Data</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['updateData']" routerLinkActive="activeLinkColor" (click)="getTitle($event)">Update Data</a>
-                    </li>
-                    <!-- <li>
-                        <a [routerLink]="['deleteData']" routerLinkActive="activeLinkColor" (click)="getTitle($event)">Delete Data</a>
-                    </li> -->
-                </ul>
+            <div class="leftMenuContainer">
+                <i class="fa fa-home homeIcon" routerLink="home"></i>
+                <div class="drpdwnList">
+                    <span [innerText]="spanText"></span>
+                    <i class="fa fa-angle-down" (click)="showMenu()" [class.drpdwnListactive]="onMenuOpen"></i>
+                    <div class="blockUI" (click)="hideMenu()" *ngIf="noMenu"></div>
+                    <ul class="actionList" [@fadeAnim] *ngIf="noMenu">
+                        <li>
+                            <a [routerLink]="['addData']" routerLinkActive="activeLinkColor" (click)="getTitle($event)">Add Data</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['updateData']" routerLinkActive="activeLinkColor" (click)="getTitle($event)">Update Data</a>
+                        </li>
+                        <!-- <li>
+                                <a [routerLink]="['deleteData']" routerLinkActive="activeLinkColor" (click)="getTitle($event)">Delete Data</a>
+                            </li> -->
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="right_content">
             <div class="left_rightcontent">
                 <ul>
-                    <li *ngFor="let portal of portals, let idx = index" (click)="getTitle($event)">
-                        <a class="firstChild" [routerLink]="portal.nav" routerLinkActive="highlight">{{portal.title}}</a>
-                    </li>                    
+                    <li *ngFor="let portal of apiservice.Portals, let idx = index" (click)="getTitle($event,portal)">
+                        <a class="firstChild" [class.highlight]="clicked === portal" (click)="clicked = portal">{{portal.Portal_Name}}</a>
+                    </li>
                 </ul>
             </div>
             <div class="right_rightcontent">
                 <div class="switchCase">
-                    <router-outlet>
-                    </router-outlet>
+                    <section class="srContent" *ngIf="homeContent">
+                        <p>
+                            <span>StoneRiver</span>
+                            <br> is an IT company providing wide range of products for Insurance Carriers (for Life as well as
+                            Non-Life). For Life Insurance Carriers they offer wide range of products for E-App data entry,
+                            Illustration,Underwriting ,Policy Admin System etc.</p>
+                        <ul class="socialList">
+                            <li>
+                                <a href="https://www.facebook.com/stoneriverinc/" target="_blank">
+                                    <i class="fa fa-facebook-square"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/stoneriverins?lang=en" target="_blank">
+                                    <i class="fa fa-twitter-square"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </section>
+                    <section class="srContent" *ngIf="viewScreen">
+                        <app-view-component [portalObj]="menuObject"></app-view-component>
+                    </section>
+                    <section class="srContent" *ngIf="addScreen">
+                        <router-outlet></router-outlet>
+                    </section>
                 </div>
             </div>
         </div>

@@ -15,6 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { AddRegionComponent } from './add-region/add-region.component';
 import { AddFormComponent } from './add-form/add-form.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { BlockUiComponent } from './block-ui/block-ui.component';
+import { APIService } from './region.service';
+import { ViewComponentComponent } from './view-component/view-component.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { DialogComponent } from './dialog/dialog.component';
     HomeComponent,
     AddRegionComponent,
     AddFormComponent,
-    DialogComponent
+    DialogComponent,
+    BlockUiComponent,
+    ViewComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,10 @@ import { DialogComponent } from './dialog/dialog.component';
     HttpModule,
     BrowserAnimationsModule
   ],
-  providers: [Location, { provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+    Location, { provide: LocationStrategy, useClass: HashLocationStrategy },
+    APIService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
