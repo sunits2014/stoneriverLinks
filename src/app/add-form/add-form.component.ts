@@ -9,28 +9,36 @@ import { APIService } from '../region.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AddFormComponent implements OnInit, AfterContentChecked {
-
-  constructor(public apiservice: APIService) { }
-
-  ngOnInit() {
-    
-  }
-
-  ngAfterContentChecked() {
-    if(this.modalValue == "addClicked") {
-      this.switchForm = "addForm"
-    }else if(this.modalValue == "deleteClicked") {
-      this.switchForm = "deleteForm"
-    }
-    console.log(this.selectedPortalObj);
-  }
-
   @Output() closeModalOutput: EventEmitter<boolean> = new EventEmitter();
   @Output() deleteObj: EventEmitter<any> = new EventEmitter();
   @Output() dialogBoolValue: EventEmitter<any> = new EventEmitter();
   @Input() modalValue: string;
   @Input() selectedPortalObj: any;
 
+<<<<<<< HEAD
+  constructor(public apiservice: APIService) { }
+=======
+  public addPortal: boolean;
+  public newPortal: string;
+  public blankInput: boolean;
+  public switchForm: string;
+  constructor() { }
+>>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
+
+  ngOnInit() {
+  }
+
+  ngAfterContentChecked() {
+    if (this.modalValue === 'addClicked') {
+      this.switchForm = 'addForm';
+    }else if (this.modalValue === 'deleteClicked') {
+      this.switchForm = 'deleteForm';
+    }
+    console.log(this.selectedPortalObj);
+  }
+
+
+<<<<<<< HEAD
   
   public addPortal: boolean;  
   public newPortal: string; 
@@ -64,14 +72,23 @@ export class AddFormComponent implements OnInit, AfterContentChecked {
           },3000)
         }
       });
+=======
+  public addNewPortal() {
+    if (this.newPortal == null || '') {
+      this.blankInput = true;
+    } else {
+      // this.portals.push({ 'title': this.newPortal });
+      this.newPortal = '';
+>>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
     }
   }
-  public switchForm: string;
+
   public closeModal() {
     this.closeModalOutput.emit(false);
     this.responseInput = false;
   }
 
+<<<<<<< HEAD
   public delObj(portalObject) {
     debugger;
     // this.dialogBoolValue.emit({clickIndex: portalObject, boolValue:true, title: portalObject.Portal_Name});
@@ -83,6 +100,10 @@ export class AddFormComponent implements OnInit, AfterContentChecked {
         this.apiservice.Portals.splice(this.apiservice.Portals.indexOf(portalObject),1);        
       }
     });
+=======
+  public delObj(event) {
+    this.dialogBoolValue.emit({clickIndex: event, boolValue: true, title: event.title});
+>>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
   }
 
 }
