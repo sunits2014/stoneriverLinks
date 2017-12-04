@@ -1,6 +1,107 @@
 :host {
     flex-basis: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.regionDetailsSection {
+    display: flex;
+    flex-basis: 100%;
+    width:100%;
+    flex-direction: column;
+}
+
+.regionDetailsSection h3 {
+    margin: 0;
+    color: #999;
+    padding: 0.5em;
+    /* border-bottom: 1px solid #ccc; */
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.infoDisplay {
+    flex-basis: 93%;
+    display: inherit;
+    border-top:1px solid #ccc;
+}
+
+.regionList {
+    margin:0;
+    padding:0;
+    flex-basis: 20%;
+    justify-content: space-between;
+    border-right: 1px solid #ccc;
+}
+
+.regionList li {
+    list-style-type: none;
+}
+
+.regionList li a {
+    padding: 0.5em;
+    color: #1896d4;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    line-height: 100%;
+}
+
+.regionList li:nth-child(even) {
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+    border-color: #eee;
+}
+
+.regionDetailsWindows {
+    flex-basis: 80%;
+    padding: 0.5em;
+}
+
+.highlight {
+    background-color: #1896d4 !important;
+    color: white !important;
+    justify-content: center !important;
+    position: relative;
+    line-height: 100%;
+}
+
+.highlight:after {
+    content: "\f105";
+    font-family: FontAwesome;
+    position: absolute;
+    opacity: 1 !important;
+    right: 1em;
+    transition: right 0.3s ease-in-out;
+}
+
+#regionDetailsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead>tr>th {
+    font-weight: normal;
+    background-color: #1896d4;
+    color: white;
+    padding:0.25em;
+    text-align: left;
+}
+
+thead>tr>th:nth-child(1) {
+    min-width: 40%;
+}
+
+tbody>tr>td {
+    padding: 0.25em;
+}
+
+tbody>tr>td>.fa {
+    margin-right: 0.5em;
+    cursor: pointer;
+}
+
+tbody>tr:nth-child(even) {
+    background-color: #f8f8f8;
 }

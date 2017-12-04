@@ -12,11 +12,13 @@ export class APIService {
 
   // public regionURL = 'assets/portaldata.json';
   // public regionURL = "http://localhost/SR_WebApi/Start/GetApplicationContents";
-  private APIURL = "http://inlt990.sapiens.int/SR_WebApi/Data/";
+  private APIURL = "http://inlt990.sapiens.int/SRAPP/Data/";
   public getRegionCall = this.APIURL + "GetPortals";
   public addPortalCall = this.APIURL + "AddPortal";
   public deletePortallCall = this.APIURL + "DeletePortal";
   public addRegionCall = this.APIURL + "AddRegion";
+  public updateRegionCall = this.APIURL + "UpdateRegion";
+  public deleteRegionCall = this.APIURL + "DeleteRegion"
 
   public Portals: Portal[];
 
@@ -37,6 +39,14 @@ export class APIService {
 
   addRegion(request) {
     return this._http.post(this.addRegionCall, request, { headers: this.headers }).map(response => response.json()).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  updateRegion(request) {
+    return this._http.post(this.updateRegionCall, request, { headers: this.headers }).map(response => response.json()).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  deleteRegion(request) {
+    return this._http.post(this.deleteRegionCall, request, { headers: this.headers }).map(response => response.json()).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   
 }

@@ -9,7 +9,7 @@
             <div class="selectPortalSection">
                 <div>
                     <label for="selectPortal">Select Portal:</label>
-                    <select id="selectPortal" name="selectedPortal" [(ngModel)]="selectedPortal" (change)="getvalue()">
+                    <select id="selectPortal" name="selectedPortal" [(ngModel)]="selectedPortal" (change)="getvalue(selectedPortal)">
                         <option [value]=null disabled>Please choose</option>
                         <option *ngFor="let portal of apiservice.Portals" [ngValue]="portal">{{portal.Portal_Name}}</option>
                     </select>
@@ -26,8 +26,8 @@
                 </div>
                 <div *ngIf="updateClicked">
                     <label for="selectRegion">Select Region:</label>
-                    <select id="selectRegion" name="selectedRegion" [(ngModel)]="Region.Region_ID" style="margin-right:0.5em">
-                        <option *ngFor="let region of selectedPortal" [ngValue]="region">{{region.Region_Name}}</option>
+                    <select id="selectRegion" name="Region.Region_ID" [(ngModel)]="Region" (change)="getRegion(Region)" style="margin-right:0.5em">
+                        <option *ngFor="let Region of tempRegions" [ngValue]="Region">{{Region.Region_Name}}</option>
                     </select>
                 </div>
             </div>
@@ -63,9 +63,8 @@
                         </li> -->
                         <li class="lastListItem">
                             <label for="title">Data:
-                                <a (click)="addRow($event)">Add Row</a>
                             </label>
-                            <div *ngIf="updateClicked" class="dataTable">
+                            <!-- <div *ngIf="updateClicked" class="dataTable">
                                 <div class="fixedTBH">
                                     <ul>
                                         <li>Server</li>
@@ -73,6 +72,7 @@
                                         <li>Address</li>
                                         <li>Link</li>
                                     </ul>
+                                    <i title="Add Server" class="fa fa-plus-square addServerBtn" (click)="addRow($event)"></i>
                                 </div>
                                 <div class="dataTableContainer">
                                     <table>
@@ -85,7 +85,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let dataTbl of selectedRegion.data, let idx = index">
+                                            <tr *ngFor="let dataTbl of Region.RegionDetails, let idx = index">
                                                 <td>
                                                     <input class="input" type="text" id="{{idx+1}}" name="dataTbl.Servers{{idx+1}}" [(ngModel)]="dataTbl.Servers" [ngModelOptions]="{standalone: true}">
                                                 </td>
@@ -98,12 +98,17 @@
                                                 <td>
                                                     <input class="input" type="text" id="{{idx+1}}">
                                                 </td>
+                                                <td class="deleteRowBtn" *ngIf="serverDetails.length > 1">
+                                                    <i class="fa fa-minus-square" (click)="deleteServerRow()"></i>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
-                            <div *ngIf="!updateClicked" class="dataTable">
+                            </div> -->
+                            <!-- <div *ngIf="!updateClicked" class="dataTable">
+                                 -->
+                            <div class="dataTable">
                                 <div class="fixedTBH">
                                     <ul>
                                         <li>Server</li>
@@ -111,6 +116,7 @@
                                         <li>Address</li>
                                         <li>Link</li>
                                     </ul>
+                                    <i title="Add Server" class="fa fa-plus-square addServerBtn" (click)="addRow($event)"></i>
                                 </div>
                                 <div class="dataTableContainer">
                                     <table>
@@ -136,6 +142,9 @@
                                                 <td formGroupName="{{idx}}">
                                                     <input class="input" formControlName="Link" type="text" id="{{idx+1}}" [readonly]="onSelection">
                                                 </td>
+                                                <td class="deleteRowBtn" *ngIf="serverDetails.length > 1">
+                                                    <i class="fa fa-minus-square" (click)="deleteServerRow(rows)"></i>
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -144,9 +153,9 @@
                         </li>
                     </ul>
                     <div class="formBtns">
-                        <button class="btn" type="submit" *ngIf="!updateClicked" (click)="addRegionData()">Add Region</button>
-                        <button class="btn" type="submit" *ngIf="updateClicked" (click)="updateRegion()">Update Region</button>
-                        <button class="btn" type="submit" *ngIf="updateClicked" id="deleteRegion" (click)="deleteRegion($event)" [disabled]="updateSelected">Delete Region</button>
+                        <button class="btn" type="submit" *ngIf="!updateClicked" (click)="addRegionData(selectedPortal)">Add Region</button>
+                        <button class="btn" type="submit" *ngIf="updateClicked" (click)="updateRegion(Region, selectedPortal)">Update Region</button>
+                        <button class="btn" type="submit" *ngIf="updateClicked" id="deleteRegion" (click)="deleteRegion(Region, selectedPortal)" [disabled]="updateSelected">Delete Region</button>
                     </div>
                 </form>
             </div>

@@ -13,9 +13,8 @@ import { Portal, Region, RegionDetail } from '../models/models';
   templateUrl: './add-region.component.html',
   styleUrls: ['./add-region.component.css']
 })
-export class AddRegionComponent implements OnInit, AfterContentChecked {
+export class AddRegionComponent implements OnInit {
   public deleteBtn: any;
-<<<<<<< HEAD
   public Region: Region;
   public RegionDetail: RegionDetail;
   public Portal: Portal;
@@ -24,15 +23,6 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     this.Region = new Region();
     this.RegionDetail = new RegionDetail();
     this.Portal = new Portal();
-=======
-
-  constructor(public route: ActivatedRoute, public regiondata: RegionService, public _router: Router, public fb: FormBuilder) {
-    this.selectedRegion = {};
-    this.selectedRegion.title = '';
-    this.selectedRegion.desc = '';
-    this.selectedRegion.link = [{ 'title': '' }, { 'link': '' }];
-    this.selectedRegion.link[0].link = '';
->>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
   }
 
   public regionDataForm: FormGroup;
@@ -43,6 +33,7 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
   public onSelection: boolean;
   public link1: string;
   public link2: string;
+  public tempRegions: any[];
 
   // Returning the Form Array Default Control
   get serverDetails(): FormArray {
@@ -54,7 +45,6 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     this.headerText = this.routeTitle.title;
     this.apiservice.getPortalData().subscribe(result => {
       this.apiservice.Portals = result.Portals;
-      console.log(result);
     });
     this.onSelection = true;
     if (this._router.url === '/stoneriver/updateData') {
@@ -64,25 +54,36 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     }
     this.regionDataForm = this.fb.group({
       serverDetails: this.fb.array([this.addServerDetails()])
+      // serverDetails: this.fb.array([this.buildfbArray(this.tempRegions)])
     });
     this.updateSelected = true;
   }
 
+  // public buildfbArray(tempRegions)
+  // {
+  //   if(tempRegions == undefined)
+  //   {
+  //     this.fb.array([this.addServerDetails()])
+  //   }
+  //   else
+  //   {
+  //     tempRegions.forEach(region => {
+  //       this.fb.array([this.addServerDetails()])
+  //     });
+  //   }    
+  // }
+
   // Adding the template to the Form Array
-  public addServerDetails(): FormGroup {
+  public addServerDetails(regionDetail: RegionDetail = null): FormGroup {
+    if (regionDetail == null) {
+      regionDetail = new RegionDetail();
+    }
     return this.fb.group({
-<<<<<<< HEAD
-      Servers: new FormControl(""),
-      ServerName: new FormControl(""),
-      Address: new FormControl(""),
-      Link: new FormControl("")      
+      Servers: new FormControl(regionDetail.Servers),
+      ServerName: new FormControl(regionDetail.ServerName),
+      Address: new FormControl(regionDetail.Address),
+      Link: new FormControl(regionDetail.Link)
     })
-=======
-      server: new FormControl(null),
-      serverName: new FormControl(null),
-      address: new FormControl(null)
-    });
->>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
   }
 
   // Looping through the Form Array Control on demand
@@ -92,29 +93,40 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     // } else if (event.srcElement.value == "") {
     //   this.serverDetails.controls.splice(this.serverDetails.controls.indexOf(event), 1);
     // };
-<<<<<<< HEAD
     if (this.onSelection != true) {
-=======
-    if (this.onSelection !== true) {
->>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
       this.serverDetails.push(this.addServerDetails());
     }
   }
 
-  ngAfterContentChecked() {
-    if (this._router.url == '/stoneriver/updateData' && this.selectedPortal != null && this.selectedRegion.title != '') {
-      this.onSelection = false;
-    } else if (this._router.url == '/stoneriver/addData' && this.selectedPortal != null) {
+  private getvalue(portalValue) {
+    this.tempRegions = portalValue.Regions;
+    // this.serverDetails.controls = this.tempRegions; 
+    if (this._router.url == '/stoneriver/updateData' && portalValue != undefined && this.Region.Region_ID == null) {
+      this.onSelection = true;
+    } else if (this._router.url == '/stoneriver/addData' && portalValue != undefined) {
       this.onSelection = false;
     };
-<<<<<<< HEAD
-    if (this.Region.Region_Name != "") {
-      this.onSelection = false;
-=======
-    if(this.selectedRegion.title != '') {
->>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
-      this.updateSelected = false;
+    // if (this.Region.Region_Name != "") {
+    //   this.onSelection = false;
+    //   this.updateSelected = false;
+    // }
+  }
+
+  public getRegion(tempRegion) {
+    this.onSelection = false;
+    this.updateSelected = false;
+    this.serverDetails.controls.splice(0);
+    // var index = 0;
+    // this.serverDetails.controls.forEach(control => {
+    //   this.serverDetails.removeAt(index++);
+    // });
+    if (tempRegion.RegionDetails != undefined) {
+      tempRegion.RegionDetails.forEach(Details => {
+        this.serverDetails.push(this.addServerDetails(Details));
+      });
+
     }
+
   }
 
   public addPortal: boolean;
@@ -124,21 +136,12 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
   public selectedPortalObj: object;
   public openForm(event) {
     this.addPortal = true;
-<<<<<<< HEAD
     if (event.target.id == "addnewportal") {
       this.modalOpenValue = "addClicked";
     } else if (event.target.id == "deleteportal") {
       this.selectedPortalObj = { portalArray: [this.portals] };
       this.modalOpenValue = "deleteClicked";
-      this.deleteBtn = { title: event.target.id, obj: this.selectedRegion };
-=======
-    if(event.target.id == 'addnewportal') {      
-      this.modalOpenValue = 'addClicked';
-    }else if(event.target.id == 'deleteportal') {
-      this.selectedPortalObj = {portalArray:[this.portals]};
-      this.modalOpenValue = 'deleteClicked';
-      this.deleteBtn = {title: event.target.id, obj: this.selectedRegion};
->>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
+      this.deleteBtn = { title: event.target.id, obj: this.Region };
     }
   }
 
@@ -147,16 +150,10 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
   }
 
   public selectedPortal: any = null;
-  getvalue() {
-    this.onSelection = false;
-    console.log(this.selectedPortal);
-    this.updateSelected = true;
-  }
-
-  public selectedRegion: any;
-  getRegion() {
-    console.log(this.selectedRegion);
-  }
+  // getvalue() {
+  //   console.log(this.selectedPortal);
+  //   this.updateSelected = true;
+  // }
 
   public closeModalPop(boolValue) {
     this.addPortal = boolValue;
@@ -180,12 +177,28 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
   //   // this.portals = event;
   // }
 
+  public updateRegion(RegionObj, PortalObj) {
+    debugger;
+    RegionObj.RegionDetails = this.regionDataForm.get('serverDetails').value;
+    let UIRequest = {Region: RegionObj};
+    this.apiservice.updateRegion(UIRequest).subscribe(response => {
+      if (response.Status != null && !response.Status.IsError) {
+        console.log(response);
+        this.apiservice.Portals[PortalObj].Regions[RegionObj] = response.Region;        
+      }
+    });
+  }
+
   public updateSelected: boolean;
-  public deleteRegion(event) {
-    console.log(this.selectedRegion);
-    this.deleteClicked = true;
-    this.getProperties = this.selectedRegion.title;
-    this.deleteBtn = { title: event.target.id, obj: this.selectedRegion };;
+  public deleteRegion(RegionObj, PortalObj) {
+    debugger;
+    let UIRequest = {Region: RegionObj};
+    this.apiservice.deleteRegion(UIRequest).subscribe(response => {
+      if (response.Status != null && !response.Status.IsError) {
+        console.log(response); 
+        this.apiservice.Portals[PortalObj].Regions.splice(this.apiservice.Portals.indexOf(RegionObj),1);        
+      }
+    });
   }
 
   public addRegionData() {
@@ -199,13 +212,11 @@ export class AddRegionComponent implements OnInit, AfterContentChecked {
     this.apiservice.addRegion(saveObj).subscribe(response => {
       if (response.Status != null && !response.Status.IsError) {
         console.log(response);
-        // this.apiservice.Portals.splice(this.apiservice.Portals.indexOf(portalObject),1);        
       }
     });
-    // console.log(saveObj);
-    // this.selectedPortal = null;
-    // this.selectedRegion.title = null;
-    // this.selectedRegion.desc = null;
-    // this.regionDataForm.reset();
+  }
+
+  public deleteServerRow(serverRowIndex) {
+    this.serverDetails.controls.splice(this.serverDetails.controls.indexOf(serverRowIndex), 1);
   }
 }

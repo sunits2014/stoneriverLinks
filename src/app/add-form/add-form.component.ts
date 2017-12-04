@@ -15,15 +15,7 @@ export class AddFormComponent implements OnInit, AfterContentChecked {
   @Input() modalValue: string;
   @Input() selectedPortalObj: any;
 
-<<<<<<< HEAD
   constructor(public apiservice: APIService) { }
-=======
-  public addPortal: boolean;
-  public newPortal: string;
-  public blankInput: boolean;
-  public switchForm: string;
-  constructor() { }
->>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
 
   ngOnInit() {
   }
@@ -38,8 +30,7 @@ export class AddFormComponent implements OnInit, AfterContentChecked {
   }
 
 
-<<<<<<< HEAD
-  
+  public switchForm: string;
   public addPortal: boolean;  
   public newPortal: string; 
   public responseInput: boolean;
@@ -72,14 +63,6 @@ export class AddFormComponent implements OnInit, AfterContentChecked {
           },3000)
         }
       });
-=======
-  public addNewPortal() {
-    if (this.newPortal == null || '') {
-      this.blankInput = true;
-    } else {
-      // this.portals.push({ 'title': this.newPortal });
-      this.newPortal = '';
->>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
     }
   }
 
@@ -88,7 +71,6 @@ export class AddFormComponent implements OnInit, AfterContentChecked {
     this.responseInput = false;
   }
 
-<<<<<<< HEAD
   public delObj(portalObject) {
     debugger;
     // this.dialogBoolValue.emit({clickIndex: portalObject, boolValue:true, title: portalObject.Portal_Name});
@@ -100,10 +82,6 @@ export class AddFormComponent implements OnInit, AfterContentChecked {
         this.apiservice.Portals.splice(this.apiservice.Portals.indexOf(portalObject),1);        
       }
     });
-=======
-  public delObj(event) {
-    this.dialogBoolValue.emit({clickIndex: event, boolValue: true, title: event.title});
->>>>>>> 36dfa244c581e6586849d505ec35490ac7915a57
   }
 
 }

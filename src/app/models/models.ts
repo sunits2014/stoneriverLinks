@@ -18,11 +18,15 @@ export class Region {
     public Tooltip: string;
     public RegionDetails: RegionDetail[];
     constructor() {
+        this.Region_ID = null;
         this.RegionDetails = new Array<RegionDetail>();
     }
 }
 
 export class RegionDetail {
+    constructor() {
+        
+    }
     public Reg_Details_ID: number;
     public Servers: string;
     public ServerName: string;

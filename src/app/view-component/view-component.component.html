@@ -1,8 +1,37 @@
-<h3>Regions</h3>
-<div class="infoDisplay">
-  <ul>
-    <li *ngFor="let region of portalObj.Regions">
-      <a></a>
-    </li>
-  </ul>
-</div>
+<section class="regionDetailsSection">
+  <h3>Regions</h3>
+  <div class="infoDisplay">
+    <ul class="regionList">
+      <li *ngFor="let region of portalObj.Regions">
+        <a [class.highlight]="clicked === region" (click)="clicked = region" (click)="getRegionDetailsData(region)">{{region.Region_Name}}</a>
+      </li>
+    </ul>
+    <div class="regionDetailsWindows">
+      <table id="regionDetailsTable" #regionDetailsTable>
+        <thead>
+          <tr>
+            <th>Server</th>
+            <th>Server Name</th>
+            <th>Address</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let serverInfo of serverInfoArray">
+            <td>{{serverInfo.Servers}}</td>
+            <td>{{serverInfo.ServerName}}</td>
+            <td>{{serverInfo.Address}}</td>
+            <td>
+              <i class="fa fa-copy" title="Copy" (click)="copyLink(serverInfo, linkContext)"></i>
+              <a style="display:none" #linkContext [innerText]="serverInfo.Link"></a>
+              <a href="{{serverInfo.Link}}" target="_blank">
+                <i class="fa fa-external-link" title="Launch"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template *ngIf="!regionDetailsTable.innerHTML"><span>Please select a Region from the list on the left.</span></ng-template>
+    </div>
+  </div>
+</section>

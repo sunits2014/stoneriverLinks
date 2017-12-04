@@ -7,12 +7,27 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ViewComponentComponent implements OnInit {
 
-  @Input() portalObj: object;
+  @Input() portalObj: any;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.portalObj)
   } 
+  public serverInfoArray = [];
 
+  public getRegionDetailsData(regionInfo) {
+    this.serverInfoArray = regionInfo.RegionDetails;
+  }
+
+  public copyLink(serverInfo, linkContext) {
+    // linkContext = serverInfo.Link;
+    const selection = getSelection();    
+    const range = document.createRange();
+
+    range.selectNodeContents(linkContext);
+    console.log(linkContext);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand('copy');
+  }
 }

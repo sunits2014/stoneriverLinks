@@ -179,6 +179,10 @@ app-add-form {
     width: 25%;
 }
 
+.dataTable table tbody tr {
+    position: relative;
+}
+
 .dataTable table tbody tr td {
     padding: 0.5em;
     width: 25%;
@@ -201,6 +205,8 @@ app-add-form {
     left: 0;
     right:0;
     background-color: #999;
+    display: flex;
+    align-items: center !important;
 }
 
 .fixedTBH ul {
@@ -218,6 +224,29 @@ app-add-form {
     flex-basis: 100% !important;
     height: 100%;
     overflow-y: overlay;
+}
+
+.addServerBtn {
+    padding: 0.25em;
+    position: absolute;
+    right:0.25em;
+    color: white;
+    cursor: pointer;
+}
+
+.addServerBtn:active {
+    color: #ccc;
+}
+
+.deleteRowBtn {
+    width:16%;
+    display: flex;
+}
+
+.deleteRowBtn .fa {
+    margin-top: 50%;
+    color: indianred;
+    cursor: pointer;
 }
 
 app-dialog {
